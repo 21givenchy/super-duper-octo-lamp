@@ -27,7 +27,7 @@ export default function Page() {
         {/* Main content area */}
         <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 pb-24 sm:pb-32 pt-24">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-center text-white mb-4 sm:mb-6">
-           Your focus is broken.
+           Founder OS that aligns your daily work to a single North Star
           </h1>
           
           <p className="text-base sm:text-lg md:text-2xl text-center text-white/80 max-w-2xl px-4 mb-8 sm:mb-12">
