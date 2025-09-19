@@ -3,9 +3,10 @@
 import { useState, useEffect, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, CheckIcon, AlertCircleIcon } from "lucide-react";
+import { CalendarTokens } from "@/lib/google-calendar";
 
 interface GoogleCalendarIntegrationProps {
-  onIntegrationSuccess?: (tokens: any) => void;
+  onIntegrationSuccess?: (tokens: CalendarTokens) => void;
   className?: string;
 }
 
@@ -38,7 +39,7 @@ const GoogleCalendarIntegration = memo(({
 
         // Clean up URL parameters
         window.history.replaceState({}, document.title, window.location.pathname);
-      } catch (err) {
+      } catch {
         setError("Failed to process authentication tokens");
       }
     } else if (authError) {
@@ -55,7 +56,7 @@ const GoogleCalendarIntegration = memo(({
         if (!parsedTokens.expiry_date || parsedTokens.expiry_date > Date.now()) {
           setIsConnected(true);
         }
-      } catch (err) {
+      } catch {
         localStorage.removeItem('google_calendar_tokens');
       }
     }
@@ -76,7 +77,7 @@ const GoogleCalendarIntegration = memo(({
         setError("Failed to initiate Google authentication");
         setIsConnecting(false);
       }
-    } catch (err) {
+    } catch {
       setError("Failed to connect to Google Calendar");
       setIsConnecting(false);
     }
@@ -109,7 +110,7 @@ const GoogleCalendarIntegration = memo(({
       } else {
         setError("Failed to create calendar reminder");
       }
-    } catch (err) {
+    } catch {
       setError("Failed to create calendar reminder");
     }
   };

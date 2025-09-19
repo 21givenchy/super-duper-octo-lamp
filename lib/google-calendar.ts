@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { calendar_v3 } from "googleapis";
 
 export interface CalendarEvent {
   title: string;
@@ -16,7 +17,7 @@ export interface CalendarTokens {
 }
 
 export class GoogleCalendarService {
-  private oauth2Client: any;
+  private oauth2Client: InstanceType<typeof google.auth.OAuth2>;
 
   constructor() {
     this.oauth2Client = new google.auth.OAuth2(
@@ -30,7 +31,7 @@ export class GoogleCalendarService {
     this.oauth2Client.setCredentials(tokens);
   }
 
-  async createSustainabilityEvent(event: CalendarEvent): Promise<any> {
+  async createSustainabilityEvent(event: CalendarEvent): Promise<calendar_v3.Schema$Event> {
     const calendar = google.calendar({ version: 'v3', auth: this.oauth2Client });
 
     const calendarEvent = {
@@ -61,7 +62,7 @@ export class GoogleCalendarService {
     });
   }
 
-  async createWeeklyImpactReminder(userEmail?: string): Promise<any> {
+  async createWeeklyImpactReminder(): Promise<calendar_v3.Schema$Event> {
     const startDate = new Date();
     startDate.setHours(10, 0, 0, 0); // 10 AM
     
@@ -80,7 +81,7 @@ export class GoogleCalendarService {
     return await this.createSustainabilityEvent(event);
   }
 
-  async createDailyImpactReminder(): Promise<any> {
+  async createDailyImpactReminder(): Promise<calendar_v3.Schema$Event> {
     const startDate = new Date();
     startDate.setHours(18, 0, 0, 0); // 6 PM
     
@@ -99,7 +100,7 @@ export class GoogleCalendarService {
     return await this.createSustainabilityEvent(event);
   }
 
-  async listUserEvents(timeRange?: { start: Date; end: Date }): Promise<any[]> {
+  async listUserEvents(timeRange?: { start: Date; end: Date }): Promise<calendar_v3.Schema$Event[]> {
     const calendar = google.calendar({ version: 'v3', auth: this.oauth2Client });
 
     const timeMin = timeRange?.start || new Date();
