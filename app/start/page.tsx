@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { memo } from "react";
 import { WaitlistForm } from "@/components/ui/waitlist-form";
+import { GoogleCalendarIntegration } from "@/components/ui/google-calendar-integration";
 
 // Community card component
 const CommunityCard = memo(({ onDiscordClick }: { onDiscordClick: () => void }) => (
@@ -94,6 +95,10 @@ export default function Page() {
 
                 <div className="mb-6 relative">
                   <WaitlistForm />
+                </div>
+                
+                <div className="mb-6">
+                  <GoogleCalendarIntegration />
                 </div>
                 
                 <CommunityCard onDiscordClick={handleDiscordClick} />

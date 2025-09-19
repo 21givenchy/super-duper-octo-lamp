@@ -26,6 +26,7 @@ This platform enables users to track their sustainability efforts and measure im
 - **Measure Page**: Impact tracking metrics and onboarding form
 - **Vibes Page**: Community engagement through embedded content
 - **Start Page**: Waitlist registration and SDG tracking information
+- **Google Calendar Integration**: Sync sustainability tracking activities and reminders with Google Calendar
 
 ## Getting Started
 
@@ -50,20 +51,54 @@ npm install
 
 3. Create a `.env.local` file based on the provided `env.example` and add your environment variables.
 
-4. Run the development server:
+4. **Google Calendar API Setup** (Required for calendar integration features):
+   
+   a. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+   
+   b. Create a new project or select an existing one
+   
+   c. Enable the Google Calendar API:
+      - Navigate to "APIs & Services" → "Library"
+      - Search for "Google Calendar API" and click "Enable"
+   
+   d. Create credentials:
+      - Go to "APIs & Services" → "Credentials"
+      - Click "Create Credentials" → "OAuth 2.0 Client IDs"
+      - Configure OAuth consent screen if prompted
+      - Set application type to "Web application"
+      - Add authorized redirect URIs: `http://localhost:3000/api/auth/google/callback`
+      - Copy the Client ID and Client Secret
+   
+   e. Create an API Key:
+      - Click "Create Credentials" → "API Key"
+      - Restrict the key to Google Calendar API for security
+      - Copy the API Key
+   
+   f. Update your `.env.local` file with the Google Calendar credentials:
+      ```
+      GOOGLE_CLIENT_ID=your_actual_client_id
+      GOOGLE_CLIENT_SECRET=your_actual_client_secret
+      GOOGLE_API_KEY=your_actual_api_key
+      GOOGLE_REDIRECT_URI=http://localhost:3000/api/auth/google/callback
+      ```
+
+5. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
 ```
 ├── app/                      # Next.js App Router pages
 │   ├── api/                  # API endpoints
+│   │   ├── auth/            # Google OAuth authentication
+│   │   ├── calendar/        # Google Calendar integration endpoints
+│   │   └── waitlist/        # Waitlist submission
 │   ├── measure/              # Measure impact page
 │   ├── start/                # Start page with waitlist form
 │   ├── vibes/                # Vibes community page
@@ -74,6 +109,30 @@ yarn dev
 ├── lib/                      # Utility functions
 └── public/                   # Static assets
 ```
+
+## Google Calendar Integration
+
+The platform includes Google Calendar integration to help users schedule and track their sustainability activities:
+
+### Features:
+- **Event Creation**: Automatically create calendar events for sustainability goals
+- **Impact Reminders**: Schedule recurring reminders for impact tracking
+- **SDG Alignment**: Tag calendar events with relevant UN SDG categories
+- **Progress Tracking**: View scheduled vs completed sustainability activities
+
+### API Endpoints:
+- `POST /api/auth/google` - Initiate Google OAuth flow
+- `GET /api/auth/google/callback` - Handle OAuth callback
+- `POST /api/calendar/events` - Create calendar events
+- `GET /api/calendar/events` - List user's sustainability events
+- `PUT /api/calendar/events/[id]` - Update calendar events
+- `DELETE /api/calendar/events/[id]` - Delete calendar events
+
+### Usage:
+1. Users connect their Google Calendar during onboarding
+2. System creates sustainability tracking events based on user preferences
+3. Regular reminders help maintain consistency in impact measurement
+4. Calendar integration works seamlessly with the existing waitlist and tracking features
 
 ## Performance Optimizations
 
