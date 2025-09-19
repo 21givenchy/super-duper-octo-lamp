@@ -1,126 +1,131 @@
-# Copilot Instructions - frontforumfocus
+# FrontForumFocus (F³) - Sustainability Impact Tracking Platform
 
-## Project Overview
-This is **frontforumfocus** (F³) - a founder focus optimization platform built with Next.js 15, designed to help founders align daily actions with their core mission. The app uses a sophisticated visual identity with dark themes, custom animations, and a founder-centric narrative.
+Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
-## Architecture & Key Patterns
+## Working Effectively
 
-### Core Tech Stack
-- **Framework**: Next.js 15 with App Router (`app/` directory)
-- **Styling**: Tailwind CSS v4 with custom theme system
-- **Components**: Shadcn UI + custom `magicui/` animation components  
-- **Forms**: React Hook Form + Zod validation
-- **Animations**: Framer Motion (`motion` package) for all interactions
-- **Analytics**: Vercel Analytics + Speed Insights
+### Bootstrap and Build the Repository
+**CRITICAL**: Set timeout to 60+ minutes for builds. NEVER CANCEL builds or long-running commands.
 
-### Project Structure
-```
-app/                 # Next.js App Router pages
-├── api/waitlist/    # API endpoint for email collection
-├── measure/         # Impact tracking page
-├── start/           # Main onboarding/waitlist page  
-├── vibes/           # Community content (videos)
-└── waitlist/        # Form schemas and actions
-
-components/
-├── magicui/         # Custom animated components (comic-text, spinning-text, etc.)
-└── ui/              # Shadcn components + project-specific (navigation, waitlist-form)
-```
-
-## Development Patterns
-
-### Component Architecture
-- **All pages are client components** using `"use client"` directive
-- **Memo extensively**: Use `React.memo()` for expensive components (see `VideoPlayer`, `SpacedTypography`)
-- **Custom hook patterns**: Forms use `useForm` from React Hook Form with Zod resolvers
-- **Animation patterns**: Framer Motion variants for consistent enter/exit animations
-
-### Styling Conventions
-- **Dark theme first**: Primary palette is `bg-black`, `bg-[#111]`, `text-white`
-- **Glassmorphism effects**: `backdrop-blur` + `bg-white/5` for cards
-- **Custom CSS variables**: Extensive use of CSS custom properties in `globals.css`
-- **Responsive patterns**: Mobile-first with `sm:`, `md:`, `lg:` breakpoints
-
-### Form & Data Flow
-- **Centralized validation**: All forms use Zod schemas (see `app/waitlist/schema.ts`)
-- **API integration**: Forms submit to `/api/waitlist` → external Router.so endpoint
-- **Error handling**: Consistent error states with `handleApiError` utility
-- **Success feedback**: Inline success/error messages in form components
-
-## Essential Development Commands
-
+Run these commands in exact order:
 ```bash
-# Development with Turbopack
-npm run dev --turbopack
+# Install dependencies - takes ~21 seconds
+npm install
 
-# Build & deployment
-npm run build
-npm run start
-
-# Linting
+# Run linting - takes ~5 seconds, may show 1 warning about ref cleanup (acceptable)
 npm run lint
+
+# Build application - NEVER CANCEL, takes ~20-30 seconds normally
+# NOTE: Build may fail with "ENOTFOUND fonts.googleapis.com" due to Google Fonts network access
+npm run build
 ```
 
-## Key Files to Understand
+**FONT ISSUE WORKAROUND**: If build fails with Google Fonts error, temporarily modify `app/layout.tsx`:
+- Comment out `import { Geist, Geist_Mono, Poppins } from "next/font/google"`
+- Remove font configuration objects (`geistSans`, `geistMono`, `poppins`)
+- Replace body className with system fonts: `className="antialiased bg-[#111] text-white"`
+- Build will then succeed in ~20 seconds
 
-### Core Layout & Client Wrapper
-- `app/layout.tsx` - Root layout with Geist fonts, analytics setup
-- `components/ui/client-wrapper.tsx` - Handles loading states + global header logo
+### Run the Application
+**Development server**:
+```bash
+# Start dev server with Turbopack - starts in ~1 second
+npm run dev
+# Access at http://localhost:3000
+```
 
-### Form Architecture
-- `components/ui/waitlist-form.tsx` - Reusable form component with customizable styling
-- `app/waitlist/schema.ts` - Zod validation schema
-- `app/api/waitlist/route.ts` - API endpoint with external integration
+**Production server**:
+```bash
+# Must build first (see above)
+npm run start
+# Starts in ~400ms, serves optimized build
+```
 
-### Animation Components
-- `components/magicui/comic-text.tsx` - Custom comic book style text with motion
-- `components/magicui/spinning-text.tsx` - Circular rotating text component
-- `components/magicui/loading-curtain.tsx` - Page load animation
+## Manual Validation Scenarios
 
-## Content & Messaging Patterns
+**ALWAYS** test these complete user workflows after making changes:
 
-### Brand Voice
-- **Target audience**: Founders struggling with focus/distractions
-- **Core message**: "Align daily actions with core mission"
-- **Tone**: Personal, authentic founder-to-founder communication
+### 1. Waitlist Form Functionality
+- Navigate to home page (`/`)
+- Fill email field with valid email (e.g., `test@example.com`)
+- Click "Join Newsletter" button
+- Verify form submission (requires `ROUTER_API_KEY` in `.env.local`)
+- Test invalid email to verify validation
 
-### Page Purposes
-- **Home (`/`)**: Main landing with pricing ($15/month, lifetime charter price)
-- **Start (`/start`)**: Earth imagery, SDG alignment messaging, community focus
-- **Measure (`/measure`)**: Personal impact tracking story and onboarding
-- **Vibes (`/vibes`)**: Community content via YouTube embeds, auto-rotating videos
+### 2. Page Navigation Flow
+- Visit each page: `/`, `/start`, `/measure`, `/vibes`, `/waitlist`
+- Verify animations load properly (Framer Motion effects)
+- Check responsive design on different viewport sizes
+- Confirm images load (background: `soph.png`, `MOSHED-2025-9-18-12-53-42.jpg`)
 
-### Visual Identity
-- **Background**: Consistent `soph.png` image across all pages with dark overlay
-- **Typography**: Geist Sans primary, custom `Cofo Sans Mono` for special text
-- **Colors**: Teal accent (`teal-500`), gradients from blue to purple
-- **Images**: Phone mockups (`mm.png`, `n.png`, `nn.png`) showing app interface
-
-## External Integrations
-
-### APIs & Services
-- **Router.so**: Email collection endpoint (`process.env.ROUTER_API_KEY`)
-- **Discord**: Community link (`https://discord.gg/qpV9Gg3S54`)
-- **YouTube**: Embedded videos in vibes page with specific start times
-- **External links**: Substack newsletter, Sourcia.ai references
-
-### Performance Optimizations
-- **Image optimization**: Next.js Image component with proper `sizes` attributes
-- **Font loading**: `display: swap` for better loading performance
-- **Component memoization**: Strategic use of `React.memo` and `useCallback`
-- **Analytics**: Vercel Speed Insights for performance monitoring
-
-## Common Editing Patterns
-
-When modifying this codebase:
-
-1. **Adding new pages**: Follow the `"use client"` + background image + navigation pattern
-2. **Form modifications**: Update Zod schema first, then component props
-3. **Styling changes**: Use existing CSS custom properties, maintain dark theme consistency
-4. **Animation additions**: Reference existing magicui components for motion patterns
-5. **Content updates**: Maintain founder-focused messaging and community emphasis
+### 3. External Links
+- Test Discord community link: `https://discord.gg/qpV9Gg3S54`
+- Verify "Try Now" button on `/measure` page: `https://greta-v2.vercel.app`
 
 ## Environment Setup
-- Copy `env.example` to `.env.local` 
-- Key environment variable: `ROUTER_API_KEY` for waitlist functionality
-- Development uses Turbopack for faster builds
+
+**Required steps**:
+1. Copy `env.example` to `.env.local`
+2. Add `ROUTER_API_KEY=your_api_key` for waitlist functionality
+3. Node.js 18+ required (project tested with Node 20.19.5)
+
+## Key Project Architecture
+
+### Core Tech Stack
+- **Framework**: Next.js 15 with App Router and Turbopack
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS v4 with custom theme system
+- **Components**: Shadcn UI + custom `magicui/` animations
+- **Forms**: React Hook Form + Zod validation
+- **Analytics**: Vercel Analytics + Speed Insights
+
+### Critical Files Structure
+```
+app/
+├── api/waitlist/route.ts     # Email submission endpoint
+├── layout.tsx                # Root layout with fonts (Google Fonts issue)
+├── page.tsx                  # Main landing page
+├── measure/page.tsx          # Impact tracking
+├── start/page.tsx            # Onboarding with Discord link
+├── vibes/page.tsx            # Community content
+└── waitlist/schema.ts        # Zod validation schema
+
+components/
+├── magicui/                  # Custom animations (comic-text, spinning-text)
+└── ui/waitlist-form.tsx      # Reusable form component
+```
+
+### Common Development Tasks
+
+**Before committing changes**:
+- Always run `npm run lint` (must pass with only acceptable warnings)
+- Build and test locally: `npm run build && npm run start`
+- Test all validation scenarios listed above
+
+**Adding new animations**: Reference existing `components/magicui/` components for Framer Motion patterns
+
+**Form modifications**: Update `app/waitlist/schema.ts` first, then component props
+
+**Styling changes**: Use existing CSS custom properties in `globals.css`, maintain dark theme (`bg-black`, `bg-[#111]`, `text-white`)
+
+## External Dependencies
+
+### APIs & Services
+- **Router.so**: Waitlist endpoint `https://app.router.so/api/endpoints/sjiyhc68`
+- **Google Fonts**: Geist, Geist Mono, Poppins (may fail in restricted environments)
+- **PostHog**: Analytics integration via `instrumentation-client.ts`
+
+### Known Issues
+- **Google Fonts**: Network access required for build, use workaround if failing
+- **ESLint warning**: `pointer-highlight.tsx` ref cleanup warning (acceptable)
+- **Metadata warnings**: Next.js 15 viewport/themeColor deprecation warnings (non-blocking)
+
+## Build Timing & Expectations
+
+- **npm install**: ~21 seconds
+- **npm run lint**: ~5 seconds  
+- **npm run build**: ~20-30 seconds (NEVER CANCEL - may take longer on slower systems)
+- **npm run dev**: ~1 second startup
+- **npm run start**: ~400ms startup
+
+**CRITICAL REMINDER**: NEVER CANCEL any build or test commands. Set timeout to 60+ minutes minimum.
