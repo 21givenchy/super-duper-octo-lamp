@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { ClientWrapper } from "@/components/ui/client-wrapper";
+import ConsentBanner from '@/components/ui/consent-banner'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -50,6 +51,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased bg-[#111] text-white`}>
         <ClientWrapper>
           {children}
+          <ConsentBanner />
         </ClientWrapper>
         <Analytics />
         <SpeedInsights />
