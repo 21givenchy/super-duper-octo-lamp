@@ -1,7 +1,7 @@
 # Copilot Instructions - frontforumfocus
 
 ## Project Overview
-This is **frontforumfocus** (F³) - a founder focus optimization platform built with Next.js 15, designed to help founders align daily actions with their core mission. The app uses a sophisticated visual identity with dark themes, custom animations, and a founder-centric narrative.
+This is **frontforumfocus** (FxN) - a founder focus optimization platform built with Next.js 15, designed to help founders align daily actions with their core mission. The app uses a sophisticated visual identity with dark themes, custom animations, and a founder-centric narrative.
 
 ## Architecture & Key Patterns
 

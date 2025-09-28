@@ -212,7 +212,7 @@ export default function Page() {
                 <span className="text-white font-medium">They aren&apos;t aligned with our ambition.</span>
               </p>
               <p>
-                <span className="text-teal-400 font-semibold">F³ (frontforumfocus)</span> is the first tool of its kind to connect 
+                <span className="text-teal-400 font-semibold">FxN (frontforumfocus)</span> is the first tool of its kind to connect 
                 every meeting, task, and idea back to your North Star.
               </p>
               <p className="text-lg font-medium text-white">
