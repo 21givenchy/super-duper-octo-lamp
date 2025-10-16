@@ -27,6 +27,19 @@
   --font-poppins: var(--font-poppins);
   --font-cofo-mono: 'Cofo Sans Mono', monospace;
   --font-ui-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* New color utilities */
+  --color-impact-green: var(--impact-green);
+  --color-focus-purple: var(--focus-purple);
+  --color-text-high: var(--text-high);
+  --color-text-medium: var(--text-medium);
+  --color-text-low: var(--text-low);
+  --color-surface: var(--surface);
+  --color-background-alt: var(--background-alt);
+  --color-border-color: var(--border-color);
+  --color-success-color: var(--success-color);
+  --color-warning-color: var(--warning-color);
+  
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -71,8 +84,65 @@
   }
 }
 
+/* Typography utilities */
+@utility heading-1 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+}
+
+@utility heading-2 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+
+@utility heading-3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+@utility body-large {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+@utility body-medium {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@utility caption-text {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+@utility button-text {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
+  
+  /* New color system for FrontForumFocus */
+  --impact-green: #2BB673;
+  --focus-purple: #6758F3;
+  --text-high: #0F172A;
+  --text-medium: #475569;
+  --text-low: #64748B;
+  --surface: #FFFFFF;
+  --background-alt: #F8FAFC;
+  --border-color: #E2E8F0;
+  --success-color: #16A34A;
+  --warning-color: #F59E0B;
+  
+  /* Shadcn theme variables */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

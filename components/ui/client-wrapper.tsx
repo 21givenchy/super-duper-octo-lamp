@@ -13,43 +13,58 @@ const HeaderLogo = () => (
   </div>
 );
 
-// Global Navigation Bar
-const GlobalNavbar = () => (
-  <nav className="fixed top-0 left-0 right-0 z-40 bg-transparent backdrop-blur-sm border-b border-white/10">
-    <div className="container mx-auto px-6 py-4">
-      <div className="flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className="text-3xl font-bold tracking-wider text-white">
-            frontforumfocus
+// Global Navigation Bar with adaptive styling
+const GlobalNavbar = () => {
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
+  const isWhitePage = pathname === '/';
+  
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-colors ${
+      isWhitePage 
+        ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm' 
+        : 'bg-transparent backdrop-blur-sm border-b border-white/10'
+    }`}>
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center">
+            <div className={`text-3xl font-bold tracking-wider transition-colors ${
+              isWhitePage ? 'text-gray-900' : 'text-white'
+            }`}>
+              frontforumfocus
+            </div>
+          </div>
+          
+          {/* Navigation Links */}
+          <div className="hidden md:block">
+            <Navigation isWhitePage={isWhitePage} />
+          </div>
+          
+          {/* TRY GRETA Button */}
+          <div className="flex items-center">
+            <a 
+              href="https://greta-v2.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`px-6 py-2 border rounded-full transition-colors font-medium ${
+                isWhitePage 
+                  ? 'border-gray-300 text-gray-900 hover:bg-gray-100' 
+                  : 'border-gray-600 text-white hover:bg-gray-800'
+              }`}
+            >
+              TRY GRETA
+            </a>
           </div>
         </div>
         
-        {/* Navigation Links */}
-        <div className="hidden md:block">
-          <Navigation />
-        </div>
-        
-        {/* TRY GRETA Button */}
-        <div className="flex items-center">
-          <a 
-            href="https://greta-v2.vercel.app" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-2 border border-gray-600 rounded-full text-white hover:bg-gray-800 transition-colors font-medium"
-          >
-            TRY GRETA
-          </a>
+        {/* Mobile Navigation */}
+        <div className="md:hidden mt-4 pb-2">
+          <Navigation isWhitePage={isWhitePage} />
         </div>
       </div>
-      
-      {/* Mobile Navigation */}
-      <div className="md:hidden mt-4 pb-2">
-        <Navigation />
-      </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export function ClientWrapper({ children }: { children: React.ReactNode }) {
   const [isLoadingComplete, setIsLoadingComplete] = useState(false);
