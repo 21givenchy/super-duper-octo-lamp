@@ -162,7 +162,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <p className="mt-6 text-sm text-gray-600">*NO school or job work is allowed! There are other co-working spaces that exist for studying, working, etc. This space is not one of them. We do this to encourage our members to show up for themselves and pursue what they don&apos;t make time for.</p>
+          
           </div>
          
         </div>
