@@ -18,6 +18,7 @@ export function Navigation({ isWhitePage = false }: NavigationProps) {
   ];
 
   return (
+ 
     <div className={`flex space-x-6 justify-center ${
       isWhitePage ? 'text-gray-600' : 'text-gray-300'
     }`}>

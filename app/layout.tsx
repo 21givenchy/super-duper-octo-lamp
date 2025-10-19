@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClientWrapper } from "@/components/ui/client-wrapper";
 import ConsentBanner from '@/components/ui/consent-banner'
@@ -17,13 +17,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap", // Add display swap for better loading performance
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
 });
 
 // Next metadata for SEO
@@ -48,7 +41,7 @@ export default function RootLayout({
         <link rel="icon" href="/s.png" />
         <meta name="google-adsense-account" content="ca-pub-5890845623424973" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased bg-[#111] text-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#111] text-white`}>
         <ClientWrapper>
           {children}
           <ConsentBanner />

@@ -3,33 +3,7 @@
 import { useState, memo, useCallback, useMemo, useEffect } from "react";
 import { StickyBanner } from "@/components/ui/sticky-banner";
 
-// Podcast data with the requested YouTube videos
-const podcastEpisodes = [
-  {
-    id: 1,
-    title: "Sustainable Living",
-    description: "Reducing your carbon footprint",
-    youtubeId: "PZoz8zfmhq0",
-    startTime: 300,
-    duration: "45:22"
-  },
-  {
-    id: 2,
-    title: "Community Conservation",
-    description: "Local environmental efforts",
-    youtubeId: "CDdree8PcIE",
-    startTime: 1260,
-    duration: "38:15"
-  },
-  {
-    id: 3,
-    title: "Tech for Good",
-    description: "Innovative solutions",
-    youtubeId: "KpxbgsBP4Ok",
-    startTime: 420,
-    duration: "52:40"
-  }
-];
+import { podcastEpisodes } from '@/lib/podcastEpisodes';
 
 // Memoized video player component
 const VideoPlayer = memo(({ youtubeId, startTime, title }: { 

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ 
 # FrontForumFocus (F³)
 
 Founder-first focus and impact platform — a Next.js app that helps founders align daily work with mission and measure meaningful outcomes.
@@ -138,7 +138,7 @@ If you rely on GDPR/CCPA requirements in your jurisdiction, integrate a full con
 
 MIT — see the `LICENSE` file.
 
-<<<<<<< HEAD
+ 
 MIT — see the `LICENSE` file.
 =======
 This project is released under the MIT license. See the `LICENSE` file for details.

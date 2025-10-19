@@ -1,981 +1,172 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useRef, useTransition } from "react";
-import { useActionState } from "react";
-import { submitWaitlistForm } from "./waitlist/action";
+import { podcastEpisodes } from "@/lib/podcastEpisodes";
 
 export default function Page() {
-  const [heroState, heroFormAction] = useActionState(submitWaitlistForm, { message: "" });
-  const heroFormRef = useRef<HTMLFormElement>(null);
-  const [isHeroPending, startHeroTransition] = useTransition();
-
-  const onHeroSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    startHeroTransition(() => {
-      heroFormAction(new FormData(heroFormRef.current!));
-      heroFormRef.current?.reset();
-    });
-  };
-
   return (
-    <div className="w-full min-h-screen bg-black text-white">
+    <div className="w-full min-h-screen relative flex flex-col" data-oid="in61k2.">
+      {/* Hero Section with Background */}
+      <div
+        className="relative w-full min-h-screen flex items-center justify-center"
+        style={{
+          backgroundImage: "url('/sea.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        data-oid="x4qlm95"
+      >
+        <div className="absolute inset-0 bg-black/20" data-oid="g3j60uh" />
 
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image - sea.jpg */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src="/sea.jpg"
-            alt="Hero background"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
+        <div className="relative z-10 text-center px-4 flex flex-col items-center gap-8" data-oid="vgzgwxf">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-light text-white/90 tracking-wider" data-oid="r3te6-_">
+            frontforumfocus
+          </h1>
 
-        {/* Hero Text */}
-        <div className="relative z-10 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center h-screen">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="font-extralight leading-tight mb-4 text-white drop-shadow-lg"
-          >
-            <span className="block text-[clamp(80px,12vw,153px)] tracking-tight hero-wordmark leading-none">frontforumfocus</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.9 }}
-            className="mx-auto max-w-3xl text-3xl md:text-4xl text-white font-semibold mt-6"
-          >
+          <p className="text-xl md:text-2xl text-white font-medium" data-oid="9s6bq.l">
             We help founders build with clarity
-          </motion.p>
-
-          {/* CTA Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.2 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-          >
-            {/* Waitlist email input + CTA */}
-            <form
-              ref={heroFormRef}
-              action={heroFormAction}
-              onSubmit={onHeroSubmit}
-              className="flex items-center gap-3"
-            >
-              <label htmlFor="email" className="sr-only">Email</label>
-              <input id="email" name="Email" type="email" placeholder="support@frontforumfocus.com" className="rounded-full px-6 py-3 bg-white/60 backdrop-blur-sm placeholder-black/50 text-black outline-none w-64" />
-              <Button type="submit" size="lg" className="rounded-full px-6 bg-black text-white" disabled={isHeroPending}>{isHeroPending ? "Sending..." : "Join us Today"}</Button>
-            </form>
-            {heroState.message && (
-              <div className="mt-3 text-sm text-green-300">{heroState.message}</div>
-            )}
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Problem & Vision Section */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-3xl text-center py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Most platforms track your output—not your true impact.
-          </h2>
-          <p className="text-lg md:text-xl opacity-80 mb-8">
-            In today&apos;s world, it&apos;s easy to get lost in busywork, fragmented tasks, and metrics that don&apos;t move the needle. FrontForumFocus is built for those who believe that every action, task, and goal should drive real progress towards purpose—individually and at scale.
           </p>
-          <p className="text-base md:text-lg font-medium text-teal-300">
-            We put purpose at the heart of productivity.
-          </p>
-        </div>
-      </section>
 
-      {/* Ecosystem: Greta + Impact Dashboard + Podcast */}
-      <section className="min-h-screen flex items-center justify-center py-20 px-6 bg-gradient-to-b from-black via-neutral-900 to-black">
-        <div className="max-w-6xl w-full">
-          <h2 className="font-bold text-4xl text-center mb-6">Our Ecosystem</h2>
-          <div className="flex flex-col md:flex-row gap-8">
-            {/* Greta Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Greta: Your Mission OS</h3>
-              <p className="mb-3">
-                Turn your daily grind into purpose-driven progress. Score your tasks for mission alignment, reflect with AI-powered insights, and stay truly on track—all in one app.
-              </p>
-              <a href="https://greta-v2.vercel.app/dashboard" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline">See Greta in action →</a>
-            </div>
-            {/* Impact Dashboard Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Impact Dashboard (Enterprise)</h3>
-              <p className="mb-3">
-                Visualize and report your organization’s real-world impact. From ESG and SDGs to custom outcomes, track progress, spot opportunities, and share your story with the world.
-              </p>
-              <a href="https://impact-dash-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline">Explore the dashboard →</a>
-            </div>
-            {/* Podcast Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Podcast</h3>
-              <p className="mb-3">
-                Unfiltered conversations with founders and leaders who make purpose practical. Get inspired—and get moving.
-              </p>
-              <a href="#" className="text-cyan-300 underline">Listen now →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* What We Do Section */}
-      <section className="min-h-screen flex items-center justify-center py-20 px-6 bg-neutral-950">
-        <div className="max-w-6xl w-full text-center">
-          <h2 className="font-bold text-4xl mb-8">What We Do</h2>
-          <div className="max-w-4xl mx-auto text-left space-y-6">
-            <p className="text-lg leading-relaxed">
-              A community of mission-driven founders helping each other turn daily work into measurable impact.
-            </p>
-            <p className="text-lg leading-relaxed">
-              We&apos;ve built tools that show you which activities actually advance your mission—so you can focus your energy on what matters, celebrate real progress, and build the change you&apos;re working toward.
-            </p>
-            <p className="text-lg leading-relaxed">
-              Together.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="min-h-screen flex items-center justify-center py-16 bg-black">
-        <div className="max-w-4xl w-full text-center">
-          <h2 className="font-bold text-3xl mb-4">Real Impact, Real Stories</h2>
-          <div className="text-lg mb-8 opacity-80">
-            <p>“Greta helped our team stay focused—impact is now a conversation, not just a spreadsheet.”</p>
-            <p className="mt-4 italic text-cyan-300">— FFF Beta User</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <div className="bg-white/5 rounded-xl p-6">+20 founders aligned daily</div>
-            <div className="bg-white/5 rounded-xl p-6">Enterprise dashboards for 2+ pilot companies</div>
-            <div className="bg-white/5 rounded-xl p-6">Podcast listeners in 12+ countries</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center py-16">
-          <h2 className="text-4xl font-extrabold mb-4">Make purpose the north star for your team</h2>
-          <p className="text-white/70 mb-6">Start a free trial and see how small changes in focus create outsized impact.</p>
-          <div className="flex items-center justify-center gap-4">
-            <Button asChild size="lg" className="rounded-full px-8">
-              <Link href="https://greta-v2.vercel.app/" target="_blank" rel="noopener noreferrer">Try Greta</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-8">
-              <Link href="https://sourcia.ai/agent-george" target="_blank" rel="noopener noreferrer">Request Demo</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 bg-black border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-white/70">© {new Date().getFullYear()} Greta — Built for founders</div>
-          <nav className="flex gap-4 text-sm">
-            <Link href="/privacy" className="text-white/60 hover:underline">Privacy</Link>
-            <Link href="/terms" className="text-white/60 hover:underline">Terms</Link>
-            <Link href="/contact" className="text-white/60 hover:underline">Contact</Link>
-          </nav>
-        </div>
-      </footer>
-
-    </div>
-  );
-}
-"use client";
-
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useRef, useTransition } from "react";
-import { useActionState } from "react";
-import { submitWaitlistForm } from "./waitlist/action";
-import { motion } from "framer-motion";
-import Image from "next/image";
-
-export default function Page() {
-  export default function Page() {
-    const [heroState, heroFormAction] = useActionState(submitWaitlistForm, { message: "" });
-    const heroFormRef = useRef<HTMLFormElement>(null);
-    const [isHeroPending, startHeroTransition] = useTransition();
-
-    const onHeroSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      startHeroTransition(() => {
-        heroFormAction(new FormData(heroFormRef.current!));
-        heroFormRef.current?.reset();
-      });
-    };
-
-    return (
-      <div className="w-full min-h-screen bg-black text-white">
-
-        {/* Hero Section */}
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Image - sea.jpg */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/sea.jpg"
-              alt="Hero background"
-              fill
-              className="object-cover"
-              priority
+          <div className="flex items-center gap-3 mt-4" data-oid=":6a0ymm">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="px-6 py-3 rounded-md bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[250px]"
+              data-oid="1r7w0bd"
             />
-            {/* Remove overlay to show image clearly */}
-          </motion.div>
 
-          {/* Hero Text */}
-          <div className="relative z-10 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center h-screen">
-              <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="font-extralight leading-tight mb-4 text-white drop-shadow-lg"
-            >
-              <span className="block text-[clamp(80px,12vw,153px)] tracking-tight hero-wordmark leading-none">frontforumfocus</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.9 }}
-              className="mx-auto max-w-3xl text-3xl md:text-4xl text-white font-semibold mt-6"
-            >
-              We help founders build with clarity
-            </motion.p>
-
-            {/* CTA Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.2 }}
-              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-            >
-              {/* Waitlist email input + CTA */}
-              <form
-                ref={heroFormRef}
-                action={heroFormAction}
-                onSubmit={onHeroSubmit}
-                className="flex items-center gap-3"
-              >
-                <label htmlFor="email" className="sr-only">Email</label>
-                <input id="email" name="Email" type="email" placeholder="support@frontforumfocus.com" className="rounded-full px-6 py-3 bg-white/60 backdrop-blur-sm placeholder-black/50 text-black outline-none w-64" />
-                <Button type="submit" size="lg" className="rounded-full px-6 bg-black text-white" disabled={isHeroPending}>{isHeroPending ? "Sending..." : "Join us Today"}</Button>
-              </form>
-              {heroState.message && (
-                <div className="mt-3 text-sm text-green-300">{heroState.message}</div>
-              )}
-            </motion.div>
+            <button className="px-8 py-3 bg-white text-gray-900 rounded-md font-semibold hover:bg-gray-100 transition-colors" data-oid="zn90qr3">
+              Join Us Today
+            </button>
           </div>
-        </div>
-
-        {/* Problem & Vision Section */}
-        <section className="min-h-screen flex items-center justify-center px-6">
-          <div className="max-w-3xl text-center py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Most platforms track your output—not your true impact.
-            </h2>
-            <p className="text-lg md:text-xl opacity-80 mb-8">
-              In today&apos;s world, it&apos;s easy to get lost in busywork, fragmented tasks, and metrics that don&apos;t move the needle. FrontForumFocus is built for those who believe that every action, task, and goal should drive real progress towards purpose—individually and at scale.
-            </p>
-            <p className="text-base md:text-lg font-medium text-teal-300">
-              We put purpose at the heart of productivity.
-            </p>
-          </div>
-        </section>
-=======
-    <div className="w-full min-h-screen bg-black text-white">
-
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center">
-        {/* Background Image - Using MOSHED image */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="absolute inset-0 overflow-hidden"
-        >
-          <Image
-            src="/new.png"
-            alt="Hero background"
-            fill
-            className="object-cover opacity-80"
-            priority
-          />
-          {/* Dark overlay to improve text contrast */}
-          <div className="absolute inset-0 bg-black/60 pointer-events-none" />
-          
-          {/* Glitch effect overlay elements */}
-          <motion.div
-            animate={{ 
-              x: [0, 10, -5, 0],
-              opacity: [0.3, 0.7, 0.3] 
-            }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
-            className="absolute top-20 left-20 w-[30px] h-[30px] bg-cyan-400 opacity-30"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, -8, 12, 0],
-              opacity: [0.2, 0.6, 0.2] 
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1 
-            }}
-            className="absolute top-40 right-32 w-[30px] h-[30px] bg-pink-400 opacity-30"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, 15, -10, 0],
-              opacity: [0.4, 0.8, 0.4] 
-            }}
-            transition={{ 
-              duration: 2.5, 
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2 
-            }}
-            className="absolute bottom-32 left-40 w-[30px] h-[30px] bg-purple-400 opacity-30"
-          />
-        </motion.div>
-
-        {/* Hero Text */}
-        <div className="relative z-10 px-8 max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-light leading-tight mb-4 text-white drop-shadow-lg"
-          >
-            
-                Community + tools to connect purpose
-            
-                with outcomes
-           
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.9 }}
-            className="mx-auto max-w-2xl text-lg md:text-xl text-white/80 font-medium"
-          >
-            Where ambitious founders and teams align daily work to what matters—with community, breakthrough tools, and AI-powered insights.
-          </motion.p>
-
-          {/* CTA Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.2 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-          >
-            <Button asChild size="lg" className="rounded-full px-6">
-              <Link href="/start">Try Greta</Link>
-            </Button>
-
-            <Button asChild size="lg" variant="outline" className="rounded-full px-6">
-              <Link href="/start?demo=1">Request Demo</Link>
-            </Button>
-
-            <Button asChild size="lg" variant="ghost" className="rounded-full px-6">
-              <Link href="/waitlist">Join Newsletter</Link>
-            </Button>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* Credibility Section */}
-      <section id="proof" className="py-24 px-20 bg-background-alt">
-        <div className="max-w-[1440px] mx-auto">
-          <h2 className="heading-2 text-center mb-16">Proof it works</h2>
-          <div className="grid grid-cols-12 gap-6 mb-12">
-            {/* Testimonial */}
-            <div className="col-span-6">
-              <Card className="border-border-color shadow-sm h-full">
-                <CardContent className="pt-6">
-                  <p className="body-large text-text-high mb-6">
-                    &quot;We cut ESG reporting time by 50% and shipped 9/12 weekly priorities.&quot;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-impact-green flex items-center justify-center text-white font-semibold">
-                      CT
-                    </div>
-                    <div>
-                      <p className="body-medium font-semibold text-text-high">CleanTech Founder</p>
-                      <p className="caption-text text-text-low">Nairobi</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-1 mt-4">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-4 h-4 fill-warning-color text-warning-color" />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Stats */}
-            <div className="col-span-6 grid grid-cols-3 gap-4">
-              <Card className="border-border-color shadow-sm text-center">
-                <CardContent className="pt-6">
-                  <div className="heading-1 text-impact-green mb-2">14</div>
-                  <p className="caption-text text-text-low">days to first Impact Snapshot</p>
-                </CardContent>
-              </Card>
-              <Card className="border-border-color shadow-sm text-center">
-                <CardContent className="pt-6">
-                  <div className="heading-1 text-focus-purple mb-2">80-90%</div>
-                  <p className="caption-text text-text-low">weekly &quot;Top 3&quot; completion</p>
-                </CardContent>
-              </Card>
-              <Card className="border-border-color shadow-sm text-center">
-                <CardContent className="pt-6">
-                  <div className="heading-1 text-impact-green mb-2">9/10</div>
-                  <p className="caption-text text-text-low">cohort satisfaction</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* CTA Bar */}
-          <div className="flex items-center justify-center gap-4">
-            <Button asChild size="lg" className="bg-impact-green hover:bg-impact-green/90 text-white rounded-xl button-text">
-              <Link href="/start">Apply for the next Focus Cohort</Link>
-            </Button>
-            <Link href="https://sourcia.ai/agent-george" target="_blank" rel="noopener noreferrer" className="body-medium text-focus-purple hover:underline">
-              Book a 15‑min intro
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Highlights Section */}
-      <section id="product" className="py-24 px-20">
-        <div className="max-w-[1440px] mx-auto">
-          <h2 className="heading-2 text-center mb-16">What you get</h2>
-          
-          {/* Feature Block A */}
-          <div className="grid grid-cols-12 gap-12 mb-16 items-center">
-            <div className="col-span-5">
-              <div className="aspect-square bg-gradient-to-br from-impact-green/20 to-focus-purple/20 rounded-xl flex items-center justify-center border border-border-color">
-                <Target className="w-24 h-24 text-impact-green" />
-              </div>
-            </div>
-            <div className="col-span-7">
-              <h3 className="heading-3 mb-4">Mission Map</h3>
-              <p className="body-medium text-text-medium">
-                Clear line of sight from vision to weekly actions.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature Block B */}
-          <div className="grid grid-cols-12 gap-12 mb-16 items-center">
-            <div className="col-span-7">
-              <h3 className="heading-3 mb-4">Impact Snapshot</h3>
-              <p className="body-medium text-text-medium">
-                Auto‑generated one‑pager for investors, partners, and grants.
-              </p>
-            </div>
-            <div className="col-span-5">
-              <div className="aspect-square bg-gradient-to-br from-focus-purple/20 to-impact-green/20 rounded-xl flex items-center justify-center border border-border-color">
-                <BarChart3 className="w-24 h-24 text-focus-purple" />
-              </div>
-            </div>
-          </div>
-
-          {/* Feature Block C */}
-          <div className="grid grid-cols-12 gap-12 mb-16 items-center">
-            <div className="col-span-5">
-              <div className="aspect-square bg-gradient-to-br from-impact-green/20 to-focus-purple/20 rounded-xl flex items-center justify-center border border-border-color">
-                <Users className="w-24 h-24 text-impact-green" />
-              </div>
-            </div>
-            <div className="col-span-7">
-              <h3 className="heading-3 mb-4">Focus Cohorts</h3>
-              <p className="body-medium text-text-medium">
-                Weekly sessions, peer check‑ins, and mentor office hours.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature Block D */}
-          <div className="grid grid-cols-12 gap-12 items-center">
-            <div className="col-span-7">
-              <h3 className="heading-3 mb-4">Public Profiles (opt‑in)</h3>
-              <p className="body-medium text-text-medium">
-                Show wins and impact to attract partners and talent.
-              </p>
-            </div>
-            <div className="col-span-5">
-              <div className="aspect-square bg-gradient-to-br from-focus-purple/20 to-impact-green/20 rounded-xl flex items-center justify-center border border-border-color">
-                <Globe className="w-24 h-24 text-focus-purple" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* For Who Section */}
-      <section id="cohorts" className="py-24 px-20 bg-background-alt">
-        <div className="max-w-[1440px] mx-auto">
-          <h2 className="heading-2 text-center mb-16">Built for mission‑driven teams</h2>
-          <div className="grid grid-cols-3 gap-6">
-            <Card className="border-border-color shadow-sm">
-              <CardHeader>
-                <CardTitle className="heading-3">Founders & small teams (2-20)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="body-medium text-text-medium">
-                  <strong>Outcome:</strong> Prioritize what moves the mission. Share progress with investors and accelerators.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border-color shadow-sm">
-              <CardHeader>
-                <CardTitle className="heading-3">Sustainability/ESG leads (SMEs 50-500)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="body-medium text-text-medium">
-                  <strong>Outcome:</strong> Centralize simple metrics and reduce reporting time without enterprise overhead.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border-color shadow-sm">
-              <CardHeader>
-                <CardTitle className="heading-3">Hubs & programs</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="body-medium text-text-medium">
-                  <strong>Outcome:</strong> Run &quot;Cohort‑in‑a‑Box&quot; to help startups ship measurable outcomes.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Section */}
-      <section id="pricing" className="py-24 px-20">
-        <div className="max-w-[1440px] mx-auto">
-          <h2 className="heading-2 text-center mb-16">Join the next 4‑week Focus Cohort</h2>
-          <div className="grid grid-cols-12 gap-12">
-            {/* Left - Checklist */}
-            <div className="col-span-6 space-y-4">
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-impact-green flex-shrink-0 mt-1" />
-                <p className="body-medium text-text-high">Weekly live sessions + templates + office hours</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-impact-green flex-shrink-0 mt-1" />
-                <p className="body-medium text-text-high">Your first Impact Snapshot in 14 days</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-impact-green flex-shrink-0 mt-1" />
-                <p className="body-medium text-text-high">A public profile to showcase wins (optional)</p>
-              </div>
-            </div>
-
-            {/* Right - Pricing Card */}
-            <div className="col-span-6">
-              <Card className="border-impact-green shadow-lg">
-                <CardHeader>
-                  <CardTitle className="heading-3">Early member pricing</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between py-3 border-b border-border-color">
-                    <span className="body-medium font-semibold">Starter</span>
-                    <span className="body-medium text-impact-green">USD 25/user/month</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-border-color">
-                    <span className="body-medium font-semibold">Team</span>
-                    <span className="body-medium text-impact-green">USD 99/user/month</span>
-                  </div>
-                  <div className="bg-background-alt p-4 rounded-lg">
-                    <p className="caption-text text-text-medium">
-                      <strong>Guarantee:</strong> If you don&apos;t publish an Impact Snapshot by week 2, join the next cohort free.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Form Section */}
-      <section id="apply" className="py-24 px-20 bg-background-alt">
-        <div className="max-w-[640px] mx-auto">
-          <h2 className="heading-2 text-center mb-4">Apply for the next Focus Cohort (25 spots)</h2>
-          <p className="body-medium text-text-low text-center mb-12">We&apos;ll review applications within 48 hours. Enter your email to get started.</p>
-          
-          <Card className="border-border-color shadow-lg">
-            <CardContent className="pt-6">
-              <WaitlistForm 
-                buttonText="Apply now"
-                placeholder="you@example.com"
-                successMessage="Application received! We'll review it within 48 hours and send next steps to your email."
-                className="space-y-2"
-                inputClassName="bg-white border-border-color text-text-high placeholder-text-low h-12 rounded-xl"
-                buttonClassName="bg-impact-green hover:bg-impact-green/90 text-white h-12 rounded-xl button-text px-8"
-              />
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-24 px-20">
-        <div className="max-w-[800px] mx-auto">
-          <h2 className="heading-2 text-center mb-16">Frequently asked</h2>
-          
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="border border-border-color rounded-xl px-6">
-              <AccordionTrigger className="heading-3 text-left hover:no-underline">
-                Do I need to migrate from Notion/Trello?
-              </AccordionTrigger>
-              <AccordionContent className="body-medium text-text-medium">
-                No. Keep your tools. Use Frontforumfocus to set priorities, track impact, and create snapshots.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2" className="border border-border-color rounded-xl px-6">
-              <AccordionTrigger className="heading-3 text-left hover:no-underline">
-                Is this only for &quot;ESG teams&quot;?
-              </AccordionTrigger>
-              <AccordionContent className="body-medium text-text-medium">
-                No. It&apos;s for mission‑driven founders and teams who want momentum and measurable outcomes.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3" className="border border-border-color rounded-xl px-6">
-              <AccordionTrigger className="heading-3 text-left hover:no-underline">
-                How much time weekly?
-              </AccordionTrigger>
-              <AccordionContent className="body-medium text-text-medium">
-                90 mins total: 30 mins plan; 60 mins live/check‑ins.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4" className="border border-border-color rounded-xl px-6">
-              <AccordionTrigger className="heading-3 text-left hover:no-underline">
-                What if I can&apos;t share data publicly?
-              </AccordionTrigger>
-              <AccordionContent className="body-medium text-text-medium">
-                Metrics are private by default. Public profiles are opt‑in.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </section>
-
-      {/* Footer CTA */}
-      <section className="py-24 px-20 bg-gradient-to-br from-impact-green/10 to-focus-purple/10">
-        <div className="max-w-[800px] mx-auto text-center">
-          <h3 className="heading-2 mb-6">Ready to go from scattered to mission‑aligned?</h3>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <Button asChild size="lg" className="bg-impact-green hover:bg-impact-green/90 text-white rounded-xl button-text">
-              <Link href="/start">Apply for the next Focus Cohort</Link>
-            </Button>
-            <Link href="https://sourcia.ai/agent-george" target="_blank" rel="noopener noreferrer" className="body-medium text-focus-purple hover:underline">
-              Book a 15‑min intro
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-20 bg-text-high text-white">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <div className="text-2xl font-bold text-impact-green">FrontForumFocus</div>
-            <nav className="flex gap-6">
-              <Link href="/privacy" className="body-medium text-text-low hover:text-white transition-colors">
-                Privacy
-              </Link>
-              <Link href="/terms" className="body-medium text-text-low hover:text-white transition-colors">
-                Terms
-              </Link>
-              <Link href="/contact" className="body-medium text-text-low hover:text-white transition-colors">
-                Contact
-              </Link>
-            </nav>
-          </div>
-          <Separator className="bg-white/10 mb-8" />
-          <div className="text-center caption-text text-text-low">
-            © {new Date().getFullYear()} FrontForumFocus — Built for founders
-          </div>
-        </div>
-      </footer>
-
-      {/* Mobile Sticky CTA Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-border-color p-4 shadow-lg z-40">
-        <div className="flex items-center gap-3">
-          <Button asChild className="flex-1 bg-impact-green hover:bg-impact-green/90 text-white rounded-xl">
-            <Link href="/start">Apply</Link>
-          </Button>
-          <Link href="https://sourcia.ai/agent-george" target="_blank" rel="noopener noreferrer" className="caption-text text-focus-purple hover:underline whitespace-nowrap">
-            Intro call
-          </Link>
-      <div className="relative min-h-screen flex items-center justify-center">
-        {/* Background Image - Using MOSHED image */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="absolute inset-0 overflow-hidden"
-        >
-          <Image
-            src="/new.png"
-            alt="Abstract hero background"
-            fill
-            className="object-cover opacity-80"
-            priority
-          />
-          
-          {/* Glitch effect overlay elements */}
-          <motion.div
-            animate={{ 
-              x: [0, 10, -5, 0],
-              opacity: [0.3, 0.7, 0.3] 
-            }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
-            className="absolute top-20 left-20 w-[30px] h-[30px] bg-cyan-400 opacity-30"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, -8, 12, 0],
-              opacity: [0.2, 0.6, 0.2] 
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1 
-            }}
-            className="absolute top-40 right-32 w-[30px] h-[30px] bg-pink-400 opacity-30"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, 15, -10, 0],
-              opacity: [0.4, 0.8, 0.4] 
-            }}
-            transition={{ 
-              duration: 2.5, 
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2 
-            }}
-            className="absolute bottom-32 left-40 w-[30px] h-[30px] bg-purple-400 opacity-30"
-          />
-        </motion.div>
-
-        {/* Hero Text */}
-        <div className="relative z-10 px-8 max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-light leading-tight mb-4"
-          >
-            
-                Community + tools to connect purpose
-            
-                with outcomes
-           
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.9 }}
-            className="mx-auto max-w-2xl text-lg md:text-xl text-white/70 font-medium"
-          >
-            Where ambitious founders and teams align daily work to what matters—with community, breakthrough tools, and AI-powered insights.
-          </motion.p>
-
-          {/* CTA Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.2 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-          >
-            <Button asChild size="lg" className="rounded-full px-6">
-              <Link href="/start">Try Greta</Link>
-            </Button>
-
-            <Button asChild size="lg" variant="outline" className="rounded-full px-6">
-              <Link href="/start?demo=1">Request Demo</Link>
-            </Button>
-
-            <Button asChild size="lg" variant="ghost" className="rounded-full px-6">
-              <Link href="/waitlist">Join Newsletter</Link>
-            </Button>
-          </motion.div>
         </div>
       </div>
 
-      {/* Problem & Vision Section */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-3xl text-center py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Most platforms track your output—not your true impact.
-          </h2>
-          <p className="text-lg md:text-xl opacity-80 mb-8">
-            In today&apos;s world, it&apos;s easy to get lost in busywork, fragmented tasks, and metrics that don&apos;t move the needle. FrontForumFocus is built for those who believe that every action, task, and goal should drive real progress towards purpose—individually and at scale.
-          </p>
-          <p className="text-base md:text-lg font-medium text-teal-300">
-            We put purpose at the heart of productivity.
-          </p>
-        </div>
-      </section>
+      {/* Community & Podcast Section */}
+      <section className="w-full bg-white py-24 px-8" data-oid="omlvf1r">
+        <div className="max-w-6xl mx-auto" data-oid="qfz6po2">
+          <div className="text-center mb-16" data-oid="d-v5psh">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4" data-oid="k-9.:.r">
+              Our Community
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-oid="9yadk1o">
+              Join our vibrant community of founders, builders, and creators
+            </p>
+          </div>
 
-      {/* Ecosystem: Greta + Impact Dashboard + Podcast */}
-      <section className="min-h-screen flex items-center justify-center py-20 px-6 bg-gradient-to-b from-black via-neutral-900 to-black">
-        <div className="max-w-6xl w-full">
-          <h2 className="font-bold text-4xl text-center mb-6">Our Ecosystem</h2>
-          <div className="flex flex-col md:flex-row gap-8">
-            {/* Greta Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Greta: Your Mission OS</h3>
-              <p className="mb-3">
-                Turn your daily grind into purpose-driven progress. Score your tasks for mission alignment, reflect with AI-powered insights, and stay truly on track—all in one app.
+          <div className="mb-12" data-oid="1ul-w:2">
+            <span className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-wider inline-block" data-oid="-jdn-rj">
+              PODCAST EPISODES
+            </span>
+          </div>
+
+          <div className="relative min-h-[600px] flex items-center justify-center" data-oid="86had5r">
+            {/* Top-left card */}
+            <div className="absolute top-0 left-[5%] w-[380px] bg-white p-4 pb-16 shadow-2xl transform -rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-300 hover:z-10" style={{ boxShadow: "0 10px 40px rgba(0,0,0,0.2)" }} data-oid="o1f6ck3">
+              <div className="aspect-video bg-gray-200" data-oid="trlo36b">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${podcastEpisodes[0].youtubeId}?start=${podcastEpisodes[0].startTime}&autoplay=0&controls=1&modestbranding=1&rel=0`}
+                  title={podcastEpisodes[0].title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-oid="8fpkidq"
+                />
+              </div>
+              <p className="mt-4 text-center text-sm font-medium text-gray-700" data-oid="zo6xn39">
+                {podcastEpisodes[0].title}
               </p>
-              <a href="https://greta-v2.vercel.app/dashboard" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline">See Greta in action →</a>
             </div>
-            {/* Impact Dashboard Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Impact Dashboard (Enterprise)</h3>
-              <p className="mb-3">
-                Visualize and report your organization’s real-world impact. From ESG and SDGs to custom outcomes, track progress, spot opportunities, and share your story with the world.
+
+            {/* Top-right card */}
+            <div className="absolute top-[20px] right-[8%] w-[380px] bg-white p-4 pb-16 shadow-2xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 hover:z-10" style={{ boxShadow: "0 10px 40px rgba(0,0,0,0.2)" }} data-oid="-g-dka1">
+              <div className="aspect-video bg-gray-200" data-oid="ht1k1zf">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${podcastEpisodes[1].youtubeId}?start=${podcastEpisodes[1].startTime}&autoplay=0&controls=1&modestbranding=1&rel=0`}
+                  title={podcastEpisodes[1].title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-oid="da:g..q"
+                />
+              </div>
+              <p className="mt-4 text-center text-sm font-medium text-gray-700" data-oid="hswdozv">
+                {podcastEpisodes[1].title}
               </p>
-              <a href="https://impact-dash-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline">Explore the dashboard →</a>
             </div>
-            {/* Podcast Card */}
-            <div className="flex-1 bg-white/5 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-2">Podcast</h3>
-              <p className="mb-3">
-                Unfiltered conversations with founders and leaders who make purpose practical. Get inspired—and get moving.
+
+            {/* Bottom-center card */}
+            <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 w-[420px] bg-white p-4 pb-16 shadow-2xl transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 hover:z-10" style={{ boxShadow: "0 10px 40px rgba(0,0,0,0.2)" }} data-oid="4pyu.x-">
+              <div className="aspect-video bg-gray-200" data-oid=".99jm2_">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${podcastEpisodes[2].youtubeId}?start=${podcastEpisodes[2].startTime}&autoplay=0&controls=1&modestbranding=1&rel=0`}
+                  title={podcastEpisodes[2].title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-oid=".4vlgj9"
+                />
+              </div>
+              <p className="mt-4 text-center text-sm font-medium text-gray-700" data-oid="qk12uf-">
+                {podcastEpisodes[2].title}
               </p>
-              <a href="#" className="text-cyan-300 underline">Listen now →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* How It Works Section */}
-      <section className="min-h-screen flex items-center justify-center py-20 px-6 bg-neutral-950">
-        <div className="max-w-6xl w-full text-center">
-          <h2 className="font-bold text-4xl mb-8">How It Works</h2>
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-            <div className="flex-1">
-              <div className="text-5xl text-cyan-300 mb-2">1</div>
-              <div>Join FrontForumFocus—free for founders and teams</div>
-            </div>
-            <div className="flex-1">
-              <div className="text-5xl text-cyan-300 mb-2">2</div>
-              <div>Activate Greta or request Enterprise Impact tools</div>
-            </div>
-            <div className="flex-1">
-              <div className="text-5xl text-cyan-300 mb-2">3</div>
-              <div>Get actionable AI nudges, track alignment, measure results</div>
-            </div>
-            <div className="flex-1">
-              <div className="text-5xl text-cyan-300 mb-2">4</div>
-              <div>Celebrate impact—share your story and learn from the community</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <section className="min-h-screen flex items-center justify-center py-16 bg-black">
-        <div className="max-w-4xl w-full text-center">
-          <h2 className="font-bold text-3xl mb-4">Real Impact, Real Stories</h2>
-          <div className="text-lg mb-8 opacity-80">
-            <p>“Greta helped our team stay focused—impact is now a conversation, not just a spreadsheet.”</p>
-            <p className="mt-4 italic text-cyan-300">— FFF Beta User</p>
+      {/* What We Do Section */}
+      <section className="w-full bg-gray-50 py-24 px-8" data-oid="l_sl9:c">
+        <div className="max-w-5xl mx-auto" data-oid="a3ac0:g">
+          <div className="mb-8" data-oid="j6gv6n:">
+            <span className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-wider inline-block" data-oid="byg2671">
+              WHAT WE DO
+            </span>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <div className="bg-white/5 rounded-xl p-6">+20 founders aligned daily</div>
-            <div className="bg-white/5 rounded-xl p-6">Enterprise dashboards for 2+ pilot companies</div>
-            <div className="bg-white/5 rounded-xl p-6">Podcast listeners in 12+ countries</div>
-          </div>
-        </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center py-16">
-          <h2 className="text-4xl font-extrabold mb-4">Make purpose the north star for your team</h2>
-          <p className="text-white/70 mb-6">Start a free trial and see how small changes in focus create outsized impact.</p>
-          <div className="flex items-center justify-center gap-4">
-            <Button asChild size="lg" className="rounded-full px-8">
-              <Link href="https://greta-v2.vercel.app/" target="_blank" rel="noopener noreferrer">Try Greta</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-8">
-              <Link href="https://sourcia.ai/agent-george" target="_blank" rel="noopener noreferrer">Request Demo</Link>
-            </Button>
+          <div className="mb-12" data-oid="4r58rh8">
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-gray-900 mb-6" data-oid="omj:h1v">
+              A community of mission-driven founders helping each other turn daily work into measurable impact.
+            </h2>
+
+            <div className="space-y-4 text-lg text-gray-800 leading-relaxed" data-oid="txncf6m">
+              <p>We&apos;ve built tools that show you which activities actually advance your mission</p>
+              <p className="italic">—so you can focus your energy on what matters, celebrate real progress, and build the change you&apos;re working toward. Together</p>
+            </div>
+          </div>
+
+          <div className="overflow-hidden" data-oid="kp0asku">
+            <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 whitespace-nowrap" data-oid="n_1yt38">
+              software, paintings, drawings, research, software, paintings, drawings, research, software
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 bg-black border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-white/70">© {new Date().getFullYear()} Greta — Built for founders</div>
-          <nav className="flex gap-4 text-sm">
-            <Link href="/privacy" className="text-white/60 hover:underline">Privacy</Link>
-            <Link href="/terms" className="text-white/60 hover:underline">Terms</Link>
-            <Link href="/contact" className="text-white/60 hover:underline">Contact</Link>
-          </nav>
-        </div>
-      </footer>
+      {/* How it Works Section - includes typographic box and screenshots */}
+      <section className="w-full bg-white py-24 px-8" data-oid="how-it-works">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Typographic Box */}
+          <div className="">
+            <div className="rounded-lg border border-black p-8 bg-gray-50 shadow-sm">
+              <div className="space-y-6">
+                <h3 className="text-4xl md:text-5xl font-serif text-gray-900">How Greta works</h3>
 
+                <div className="text-3xl md:text-4xl font-serif text-gray-900 space-y-3">
+                  <div className="text-purple-700 font-extrabold">Track daily activities</div>
+                  <div className="text-blue-600 font-semibold">Get real time insights</div>
+                  <div className="text-red-600 font-semibold">Get report and communicate progress</div>
+                </div>
+              </div>
+            </div>
+            <p className="mt-6 text-sm text-gray-600">*NO school or job work is allowed! There are other co-working spaces that exist for studying, working, etc. This space is not one of them. We do this to encourage our members to show up for themselves and pursue what they don&apos;t make time for.</p>
+          </div>
+         
+        </div>
+      </section>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f1e1d81 (Refactor and enhance FrontForumFocus platform)

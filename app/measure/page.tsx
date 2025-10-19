@@ -7,24 +7,19 @@ export default function Page() {
     <div className="min-h-screen flex flex-col lg:flex-row font-[family-name:var(--font-poppins)] bg-gray-50 text-gray-800">
       {/* Left Side - Content */}
       <div className="lg:w-1/2 p-8 md:p-12 lg:p-24 flex flex-col justify-center">
-        {/* Header - removed since we have global navbar */}
+        {/* Mission Badge */}
+        <div className="inline-block px-6 py-2 bg-green-200 text-green-800 rounded-full text-2xl font-semibold mb-8 transform -rotate-3">
+          our mission
+        </div>
         
-        {/* Main Content */}
-        <main>
-          {/* Mission Badge */}
-          <div className="inline-block px-6 py-2 bg-green-200 text-green-800 rounded-full text-2xl font-semibold mb-8 transform -rotate-3">
-            our mission
-          </div>
-          
-          {/* Mission Content */}
-          <p className="text-2xl md:text-3xl lg:text-4xl leading-snug mb-10">
-            We take <strong className="font-semibold">purpose</strong> seriously because that&apos;s where we find meaning. Yet, the platforms we use today often disconnect us from our true intentions, built on outdated models that haven&apos;t evolved.
-          </p>
-          
-          <p className="text-2xl md:text-3xl lg:text-4xl leading-snug">
-            We realized that many of you felt the same way. That&apos;s why we built FrontForumFocus– the first community-driven platform that connects your <strong className="font-semibold italic">purpose</strong> with real-world <strong className="font-semibold italic">impact</strong>, not just empty metrics.
-          </p>
-        </main>
+        {/* Mission Content */}
+        <p className="text-2xl md:text-3xl lg:text-4xl leading-snug mb-10">
+          We take <strong className="font-semibold">purpose</strong> seriously because that&apos;s where we find meaning. Yet, the platforms we use today often disconnect us from our true intentions, built on outdated models that haven&apos;t evolved.
+        </p>
+        
+        <p className="text-2xl md:text-3xl lg:text-4xl leading-snug">
+          We realized that many of you felt the same way. That&apos;s why we built FrontForumFocus — a community-driven platform that connects your <strong className="font-semibold italic">purpose</strong> with real-world <strong className="font-semibold italic">impact</strong>, not just empty metrics.
+        </p>
       </div>
 
       {/* Right Side - Image & App Preview */}
@@ -67,10 +62,10 @@ export default function Page() {
                 ))}
               </div>
               
-              {/* Our Very Cool App Text */}
+              {/* Measure-focused App Text */}
               <div className="text-center text-white mt-8">
-                <p className="text-sm uppercase tracking-widest opacity-80">OUR VERY</p>
-                <p className="text-2xl font-bold">COOL APP</p>
+                <p className="text-sm uppercase tracking-widest opacity-80">MEASURE</p>
+                <p className="text-2xl font-bold">YOUR IMPACT</p>
               </div>
             </div>
           </div>
