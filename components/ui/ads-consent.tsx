@@ -22,6 +22,8 @@ export default function AdsConsent() {
     // If previously granted, ensure the script is loaded on mount
     if (stored === "granted") {
       loadAdsScript();
+      // notify ad slots
+      window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: true } }));
     }
   }, []);
 
@@ -51,6 +53,8 @@ export default function AdsConsent() {
       localStorage.setItem(ADS_KEY, "granted");
       setConsent("granted");
       loadAdsScript();
+      // notify ad slots
+      window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: true } }));
     } catch (e) {
       console.error(e);
     }
@@ -60,6 +64,8 @@ export default function AdsConsent() {
     try {
       localStorage.setItem(ADS_KEY, "denied");
       setConsent("denied");
+      // notify ad slots
+      window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: false } }));
     } catch (e) {
       console.error(e);
     }

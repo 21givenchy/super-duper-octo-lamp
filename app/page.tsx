@@ -1,6 +1,65 @@
 "use client";
 
 import { podcastEpisodes } from "@/lib/podcastEpisodes";
+import { useState } from "react";
+
+function HeroWaitlistInput() {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setMessage(null);
+    if (!email || !email.includes("@")) {
+      setMessage("Please enter a valid email.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: email }),
+      });
+
+      if (res.ok) {
+        setMessage("Thanks — we've added you to the waitlist.");
+        setEmail("");
+      } else {
+        const data = await res.json();
+        setMessage(data?.error || "Failed to submit. Please try again.");
+      }
+    } catch {
+      setMessage("Network error. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <>
+      <label htmlFor="hero-email" className="sr-only">Email</label>
+      <input
+        id="hero-email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        className="px-6 py-3 rounded-md bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[250px]"
+      />
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        disabled={submitting}
+        className="px-8 py-3 bg-white text-gray-900 rounded-md font-semibold hover:bg-gray-100 transition-colors"
+      >
+        {submitting ? "Sending..." : "Join Us Today"}
+      </button>
+      {message && <div className="text-sm text-teal-400 mt-2">{message}</div>}
+    </>
+  );
+}
 
 export default function Page() {
   return (
@@ -28,16 +87,7 @@ export default function Page() {
           </p>
 
           <div className="flex items-center gap-3 mt-4" data-oid=":6a0ymm">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="px-6 py-3 rounded-md bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[250px]"
-              data-oid="1r7w0bd"
-            />
-
-            <button className="px-8 py-3 bg-white text-gray-900 rounded-md font-semibold hover:bg-gray-100 transition-colors" data-oid="zn90qr3">
-              Join Us Today
-            </button>
+            <HeroWaitlistInput />
           </div>
         </div>
       </div>

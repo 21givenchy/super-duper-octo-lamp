@@ -20,6 +20,7 @@ export default function AdSlot({
   // Client-side, we only enable the ad slot when there's sufficient publisher content
   // on the page (to comply with AdSense policy about "screens without publisher-content").
   const [canShow, setCanShow] = useState(false)
+  // Script load flag (tracked via DOM presence) - no local state needed
 
   useEffect(() => {
     if (forceShow) {
@@ -77,6 +78,8 @@ export default function AdSlot({
       }
     }
 
+    // If script is already present on the page, we'll rely on the global adsbygoogle array.
+
     window.addEventListener('ad-consent-changed', onConsent)
 
     return () => {
@@ -102,7 +105,31 @@ export default function AdSlot({
     <div aria-label={`ad-slot-${id}`} className="border border-neutral-200 p-3 rounded-md bg-white">
       <small className="block text-sm text-neutral-600 mb-2">{label}</small>
       <div className="min-h-[120px] flex items-center justify-center">
-        <span className="text-neutral-700">Ad-ready slot — load advertiser creative here after consent and sandboxing.</span>
+        {/* Google AdSense slot */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-5890845623424973'}
+          data-ad-slot={id}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+        <script
+          // small helper to push an ad render once the script is available
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                try {
+                  if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
+                    window.adsbygoogle.push({});
+                  }
+                } catch(e) {
+                  console.warn('adsbygoogle push failed', e);
+                }
+              })();
+            `,
+          }}
+        />
       </div>
     </div>
   )
