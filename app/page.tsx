@@ -201,6 +201,56 @@ function HowItWorksInteractive() {
   );
 }
 
+function NewsletterSignup() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) {
+      setStatus("error");
+      return;
+    }
+    setStatus("submitting");
+    
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: email }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-2">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        className="px-4 py-2 bg-white/10 border border-white/20 rounded text-white placeholder-gray-400 w-full focus:outline-none focus:border-white/40"
+        disabled={status === "submitting"}
+      />
+      {status === "success" && (
+        <p className="text-xs text-green-400">Thanks for signing up!</p>
+      )}
+      {status === "error" && (
+        <p className="text-xs text-red-400">Please enter a valid email</p>
+      )}
+    </form>
+  );
+}
+
 export default function Page() {
   return (
     <div className="w-full min-h-screen relative flex flex-col" data-oid="in61k2.">
@@ -515,11 +565,7 @@ export default function Page() {
             
             <div>
               <h3 className="text-white font-semibold mb-4 text-lg">Newsletter</h3>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="px-4 py-2 bg-white/10 border border-white/20 rounded text-white placeholder-gray-400 w-full focus:outline-none focus:border-white/40"
-              />
+              <NewsletterSignup />
             </div>
             
             <div>
