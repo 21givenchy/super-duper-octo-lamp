@@ -480,8 +480,16 @@ export default function Page() {
           </div>
 
           <div className="overflow-hidden" data-oid="kp0asku">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 whitespace-nowrap" data-oid="n_1yt38">
-              software, paintings, drawings, research, software, paintings, drawings, research, software
+            <div className="text-lg md:text-xl text-gray-800 leading-relaxed" data-oid="n_1yt38">
+              <p className="mb-4">From software development and research initiatives to creative works and community projects—we support founders tracking impact across diverse project types:</p>
+              <ul className="space-y-2 list-disc list-inside">
+                <li><strong>Technology & Software:</strong> Track development milestones, user adoption, and technical impact metrics</li>
+                <li><strong>Research & Academia:</strong> Measure publication impact, citation metrics, and knowledge dissemination</li>
+                <li><strong>Creative Arts:</strong> Monitor exhibition reach, audience engagement, and cultural impact</li>
+                <li><strong>Social Enterprises:</strong> Quantify beneficiaries reached, communities served, and sustainable development goals achieved</li>
+                <li><strong>Environmental Initiatives:</strong> Track carbon reduction, conservation efforts, and ecosystem restoration</li>
+              </ul>
+              <p className="mt-4 italic">Whatever your mission, Greta helps you measure what matters and celebrate meaningful progress.</p>
             </div>
           </div>
         </div>
@@ -571,9 +579,11 @@ export default function Page() {
             <div>
               <h3 className="text-white font-semibold mb-4 text-lg">Social</h3>
               <div className="space-y-2">
-                <a href="https://linkedin.com" className="block text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-                <a href="https://twitter.com" className="block text-gray-400 hover:text-white transition-colors">X (Twitter)</a>
-                <a href="https://youtube.com" className="block text-gray-400 hover:text-white transition-colors">YouTube</a>
+                <a href="https://linkedin.com/company/frontforumfocus" className="block text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://x.com/frontforumfocus" className="block text-gray-400 hover:text-white transition-colors">X (Twitter)</a>
+                <a href="https://youtube.com/@frontforumfocus" className="block text-gray-400 hover:text-white transition-colors">YouTube</a>
+                <a href="https://instagram.com/frontforumfocus" className="block text-gray-400 hover:text-white transition-colors">Instagram</a>
+                <a href="https://21givenchy.substack.com/p/the-rise-of-impact-investment-what" className="block text-gray-400 hover:text-white transition-colors">Substack</a>
               </div>
             </div>
             
