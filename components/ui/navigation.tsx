@@ -13,6 +13,7 @@ export function Navigation({ isWhitePage = false }: NavigationProps) {
   const links = [
     { href: "/", label: "Home", hoverColor: isWhitePage ? "hover:text-blue-600" : "hover:text-blue-400" },
     { href: "/measure", label: "Mission", hoverColor: isWhitePage ? "hover:text-green-600" : "hover:text-green-400" },
+    { href: "/impact", label: "Impact", hoverColor: isWhitePage ? "hover:text-teal-600" : "hover:text-teal-400" },
     { href: "/vibes", label: "Vibes", hoverColor: isWhitePage ? "hover:text-purple-600" : "hover:text-purple-400" },
     { href: "/start", label: "About", hoverColor: isWhitePage ? "hover:text-yellow-600" : "hover:text-yellow-400" }
   ];
