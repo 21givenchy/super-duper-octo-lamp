@@ -506,6 +506,306 @@ export default function Page() {
         </div>
       </section>
 
+      {/* About Us Section - Detailed */}
+      <section className="w-full bg-white py-24 px-8" data-oid="about-us-section">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
+            About frontforumfocus
+          </h2>
+          
+          <div className="space-y-8 text-lg text-gray-700 leading-relaxed">
+            <p className="text-xl font-semibold text-gray-900">
+              We&apos;re building the future of mission-driven productivity—where every action counts toward meaningful impact.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-12 my-12">
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
+                <p>
+                  frontforumfocus exists to help mission-driven founders and teams align their daily work with their core purpose. We believe that meaningful change happens when people can see clearly how their efforts contribute to their larger mission. Too many founders struggle with distractions, misaligned activities, and the inability to measure what truly matters.
+                </p>
+                <p className="mt-4">
+                  Our platform, Greta, transforms abstract goals into concrete, trackable activities. We help you understand which tasks move the needle and which ones drain your energy without advancing your mission. This clarity empowers you to focus on high-impact work and build the change you envision.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h3>
+                <p>
+                  We envision a world where every mission-driven organization can demonstrate clear, measurable impact. Where founders don&apos;t have to choose between growth and purpose. Where transparency in impact measurement becomes the standard, not the exception.
+                </p>
+                <p className="mt-4">
+                  By 2030, we aim to be the leading platform for mission alignment and impact tracking, serving over 100,000 mission-driven founders across 50+ countries. We&apos;re not just building software—we&apos;re fostering a global community of purpose-driven leaders who support each other in creating meaningful change.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Values</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Purpose First</h4>
+                  <p className="text-base">We prioritize mission alignment over vanity metrics. Every feature we build serves the goal of helping founders stay true to their core purpose.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Radical Transparency</h4>
+                  <p className="text-base">We practice what we preach—tracking our own impact publicly and sharing our learnings openly with the community.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Community-Driven</h4>
+                  <p className="text-base">We&apos;re bootstrapped and founder-led, building alongside our users and incorporating their feedback into every decision.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Why We Built This</h3>
+              <p>
+                As founders ourselves, we experienced firsthand the challenge of staying focused on what matters. We spent countless hours on tasks that felt productive but didn&apos;t advance our core mission. We saw brilliant founders burn out chasing metrics that looked good on paper but didn&apos;t reflect real impact.
+              </p>
+              <p className="mt-4">
+                Traditional productivity tools focus on getting more done, but they don&apos;t help you prioritize what&apos;s truly important. Impact measurement tools exist for large NGOs and enterprises, but they&apos;re too complex and expensive for individual founders and small teams. We built frontforumfocus to bridge this gap—providing sophisticated impact tracking in a simple, accessible format.
+              </p>
+              <p className="mt-4">
+                Today, we&apos;re proud to serve over 500 mission-driven founders across multiple countries, helping them track thousands of activities and align their work with meaningful impact. We&apos;re bootstrapped, profitable, and growing sustainably—proving that you can build a successful business while staying true to your mission.
+              </p>
+            </div>
+            
+            <div className="text-center mt-12">
+              <a 
+                href="https://greta-v2.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block px-10 py-4 bg-gray-900 text-white rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
+              >
+                Start Your Impact Journey with Greta
+              </a>
+              <p className="mt-4 text-sm text-gray-600">
+                Join 500+ founders building with purpose. <a href="https://greta-v2.vercel.app" className="text-blue-600 hover:underline">Try Greta free for 14 days</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section className="w-full bg-gray-50 py-24 px-8" data-oid="case-studies-section">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
+            Real Founder Stories
+          </h2>
+          
+          <div className="space-y-12">
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+              <div className="flex items-start gap-6">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                    From Scattered to Focused: How Sarah Tripled Her Impact in 6 Months
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">Sarah Chen, Founder of EcoTech Solutions</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Sarah was running a sustainable technology startup but felt overwhelmed by competing priorities. &quot;I was working 70-hour weeks but couldn&apos;t tell if I was making progress toward my core mission of reducing e-waste,&quot; she explains.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    After implementing Greta, Sarah discovered that 40% of her time was spent on activities with low mission alignment—primarily administrative tasks and meetings that could be delegated or eliminated. She restructured her schedule to focus on high-impact activities like product development and partnership building.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed font-semibold">
+                    Results: Sarah reduced her work hours by 20% while tripling the number of e-waste collection partnerships established. Her team now tracks their collective impact daily, maintaining 92% mission alignment.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+              <div className="flex items-start gap-6">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                    Scaling Impact Without Losing Focus: A Social Enterprise Success Story
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">Michael Rodriguez, CEO of Community First Initiative</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    As Community First Initiative grew from 5 to 25 team members, Michael struggled to ensure everyone remained aligned with the organization&apos;s mission of providing vocational training to underserved communities.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    &quot;Different teams were pursuing different goals, and we had no way to measure whether our activities were actually advancing our mission,&quot; Michael recalls. Greta provided a unified platform where every team member could track their activities and see their contribution to organizational impact.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed font-semibold">
+                    Results: Team-wide mission alignment increased from 67% to 89% within three months. The organization now serves 3x more beneficiaries while maintaining high program quality, thanks to data-driven resource allocation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+              <div className="flex items-start gap-6">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                    Demonstrating Impact to Secure Funding: An NGO&apos;s Journey
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">Amara Okafor, Executive Director of Youth Empowerment Network</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Amara&apos;s NGO struggled to secure funding because they couldn&apos;t clearly demonstrate their impact to potential donors. Traditional impact reports were time-consuming to produce and didn&apos;t capture the day-to-day progress of their youth empowerment programs.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Using Greta&apos;s automated impact reporting, Amara&apos;s team generated real-time dashboards showing exactly how program activities translated into youth outcomes. &quot;For the first time, we could show donors precisely how their money would create impact,&quot; Amara says.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed font-semibold">
+                    Results: The organization secured $250,000 in new funding within four months and improved program effectiveness by 35% through data-driven program design.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-gray-700 mb-4">Ready to write your own success story?</p>
+            <a 
+              href="/impact" 
+              className="inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
+            >
+              See Our Impact Dashboard
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources Section */}
+      <section className="w-full bg-white py-24 px-8" data-oid="resources-section">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
+            Resources for Mission-Driven Founders
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">📺 Video Content</h3>
+              <p className="text-gray-700 mb-4">
+                Our YouTube channel features tutorials, founder interviews, and deep dives into mission alignment strategies. Learn from other founders who are successfully building purpose-driven organizations.
+              </p>
+              <div className="space-y-3">
+                <a 
+                  href="https://youtube.com/@frontforumfocus" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Watch Getting Started with Greta
+                </a>
+                <a 
+                  href="https://youtube.com/@frontforumfocus" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Founder Interviews Series
+                </a>
+                <a 
+                  href="https://youtube.com/@frontforumfocus" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Impact Measurement Best Practices
+                </a>
+                <p className="text-sm text-gray-600 mt-4">8,740+ views and growing daily</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">✍️ Written Content</h3>
+              <p className="text-gray-700 mb-4">
+                Our Substack newsletter delivers weekly insights on mission alignment, founder productivity, and impact measurement. Join thousands of founders who read our articles to stay focused on what matters.
+              </p>
+              <div className="space-y-3">
+                <a 
+                  href="https://21givenchy.substack.com/p/the-rise-of-impact-investment-what" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → The Rise of Impact Investment: What Founders Need to Know
+                </a>
+                <a 
+                  href="https://21givenchy.substack.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → How to Measure Intangible Impact
+                </a>
+                <a 
+                  href="https://21givenchy.substack.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Building Sustainable Founder Habits
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">🎙️ Podcast Series</h3>
+              <p className="text-gray-700 mb-4">
+                Listen to conversations with mission-driven founders, impact investors, and social entrepreneurs. Learn how they balance growth with purpose and measure what matters.
+              </p>
+              <div className="space-y-3">
+                <a 
+                  href="/vibes" 
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Browse All Episodes
+                </a>
+                <p className="text-sm text-gray-600">12+ episodes published and counting</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">💬 Community</h3>
+              <p className="text-gray-700 mb-4">
+                Join our Discord community to connect with other mission-driven founders. Share challenges, celebrate wins, and get support from peers who understand the unique journey of building with purpose.
+              </p>
+              <div className="space-y-3">
+                <a 
+                  href="https://discord.gg/qpV9Gg3S54" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-600 hover:underline font-medium"
+                >
+                  → Join Discord Community
+                </a>
+                <p className="text-sm text-gray-600">500+ active members from 50+ countries</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-10 text-center">
+            <h3 className="text-3xl font-semibold text-gray-900 mb-4">
+              Try Greta—Powered by frontforumfocus
+            </h3>
+            <p className="text-xl text-gray-700 mb-6 max-w-2xl mx-auto">
+              Experience the power of AI-driven mission alignment. Track your activities, measure your impact, and build with purpose.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href="https://greta-v2.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-10 py-4 bg-gray-900 text-white rounded-full font-bold text-lg hover:bg-gray-800 transition-colors"
+              >
+                Launch Greta App
+              </a>
+              <p className="text-sm text-gray-600">
+                Free 14-day trial • No credit card required
+              </p>
+            </div>
+            <p className="text-xs text-gray-500 mt-6">
+              Powered by frontforumfocus—helping founders worldwide build with purpose since 2024
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="w-full bg-gray-50 py-24 px-8" data-oid="faq-section">
         <div className="max-w-4xl mx-auto">
