@@ -88,9 +88,40 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "frontforumfocus",
+              "alternateName": "Front Forum Focus",
+              "url": "https://frontforumfocus.com",
+              "logo": "https://frontforumfocus.com/s.png",
+              "description": "A platform helping mission-driven founders align their daily activities with core mission through AI-powered impact tracking and measurement tools.",
+              "sameAs": [
+                "https://linkedin.com/company/frontforumfocus",
+                "https://x.com/frontforumfocus",
+                "https://youtube.com/@frontforumfocus",
+                "https://instagram.com/frontforumfocus",
+                "https://21givenchy.substack.com"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "hello@frontforumfocus.com",
+                "contactType": "Customer Support"
+              },
+              "founder": {
+                "@type": "Person",
+                "name": "frontforumfocus team"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "Greta by frontforumfocus",
               "applicationCategory": "ProductivityApplication",
+              "url": "https://greta-v2.vercel.app",
               "offers": {
                 "@type": "Offer",
                 "price": "25",

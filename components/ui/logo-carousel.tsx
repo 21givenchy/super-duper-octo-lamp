@@ -7,7 +7,7 @@ const logos = [
   { name: "Trust Badge 2", text: "50+ Countries" },
   { name: "Trust Badge 3", text: "95% Mission Alignment" },
   { name: "Trust Badge 4", text: "10k+ Activities Tracked" },
-  { name: "Trust Badge 5", text: "Y Combinator Backed" },
+  { name: "Trust Badge 5", text: "Bootstrapped & Founder-Led" },
 ];
 
 export function LogoCarousel() {

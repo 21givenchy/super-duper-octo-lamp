@@ -13,7 +13,7 @@ const TrustIndicators = () => (
   <div className="flex flex-wrap justify-center items-center gap-8 mb-16 opacity-60">
     <div className="text-sm text-gray-400">Trusted by 500+ founders</div>
     <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-    <div className="text-sm text-gray-400">Y Combinator backed</div>
+    <div className="text-sm text-gray-400">Bootstrapped</div>
     <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
     <div className="text-sm text-gray-400">SOC 2 compliant</div>
   </div>
