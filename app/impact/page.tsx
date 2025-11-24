@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users, Building2, Globe, FolderKanban, Podcast, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Animated counter component
 function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
   const [count, setCount] = useState(0);
 
-  useState(() => {
+  useEffect(() => {
     const duration = 2000;
     const steps = 60;
     const increment = value / steps;
@@ -26,7 +26,7 @@ function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: strin
     }, duration / steps);
 
     return () => clearInterval(timer);
-  });
+  }, [value]);
 
   return (
     <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
