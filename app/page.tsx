@@ -269,7 +269,7 @@ export default function Page() {
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center gap-8" data-oid="vgzgwxf">
           <h1 className="text-7xl md:text-8xl lg:text-9xl font-light text-white/90 tracking-wider" data-oid="r3te6-_">
-            frontforumfocus
+            share your impact online.
           </h1>
 
           <p className="text-xl md:text-2xl text-white font-medium max-w-4xl" data-oid="9s6bq.l">
