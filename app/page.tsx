@@ -268,7 +268,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-black/20" data-oid="g3j60uh" />
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center gap-8" data-oid="vgzgwxf">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-light text-white/90 tracking-wider" data-oid="r3te6-_">
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-light text-white/90 tracking-wider" data-oid="r3te6-_">
             share your impact online.
           </h1>
 
