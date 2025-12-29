@@ -268,16 +268,27 @@ export default function Page() {
         <div className="absolute inset-0 bg-black/20" data-oid="g3j60uh" />
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center gap-8" data-oid="vgzgwxf">
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-light text-white/90 tracking-wider" data-oid="r3te6-_">
-            share your impact online.
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-yellow-400 tracking-tight uppercase leading-[0.9]" data-oid="r3te6-_">
+            connecting daily work to your purpose
           </h1>
 
-          <p className="text-xl md:text-2xl text-white font-medium max-w-4xl" data-oid="9s6bq.l">
-            frontforumfocus shows founders and teams—step by step—which activities truly advance your mission, so you grow with purpose and clarity.
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-light max-w-4xl leading-relaxed" data-oid="9s6bq.l">
+            Guiding you through busywork and highlighting the tasks that truly matter, so you can focus your time and energy
           </p>
 
-          <div className="flex items-center gap-3 mt-4" data-oid=":6a0ymm">
-            <HeroWaitlistInput />
+          <div className="flex items-center gap-4 mt-8" data-oid=":6a0ymm">
+            <a 
+              href="/product/greta"
+              className="px-10 py-4 bg-yellow-400 text-black rounded-md font-bold text-lg hover:bg-yellow-300 transition-colors uppercase tracking-wide"
+            >
+              Meet Greta
+            </a>
+            <a 
+              href="/product/greta"
+              className="px-10 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-md font-bold text-lg hover:bg-white/20 transition-colors uppercase tracking-wide"
+            >
+              Learn More
+            </a>
           </div>
         </div>
       </div>
