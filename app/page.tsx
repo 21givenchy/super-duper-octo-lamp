@@ -255,41 +255,41 @@ export default function Page() {
   return (
     <div className="w-full min-h-screen relative flex flex-col bg-white" data-oid="in61k2.">
       {/* Hero Section - Modern Clean Design */}
-      <div className="relative w-full min-h-screen flex items-center bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 py-16 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative w-full min-h-screen flex items-center bg-white overflow-hidden pt-24 pb-16">
+        <div className="max-w-7xl mx-auto px-8 py-16 grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Bold Typography */}
           <div className="relative z-10 space-y-6">
             <div className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-8">
               frontforumfocus PRESENTS
             </div>
             
-            <div className="space-y-4">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[0.95]" style={{ fontFamily: 'Georgia, serif' }}>
+            <div className="space-y-2">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[0.9]" style={{ fontFamily: 'Georgia, serif' }}>
                 Your work is<br />clearer when
               </h1>
               
-              <div className="relative">
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase leading-tight">
-                  Greta
+              <div className="relative -ml-2 my-4">
+                <h2 className="text-7xl md:text-8xl lg:text-9xl font-black text-gray-900 uppercase leading-none tracking-tighter">
+                  GRETA
                 </h2>
               </div>
               
-              <div className="flex items-center gap-3">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+              <div className="flex items-baseline gap-3 -ml-2">
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-none">
                   shows you
                 </h2>
               </div>
               
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic text-gray-900 uppercase">
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic text-gray-900 uppercase leading-none -ml-2 mt-2">
                 OUTCOMES
               </h2>
             </div>
 
-            <p className="text-xl md:text-2xl text-gray-700 font-light max-w-xl leading-relaxed pt-8">
+            <p className="text-xl md:text-2xl text-gray-700 font-light max-w-xl leading-relaxed pt-10">
               Turning your daily tasks into live insights
             </p>
 
-            <div className="flex items-center gap-4 pt-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-10">
               <a 
                 href="/product/greta"
                 className="px-10 py-4 bg-black text-white font-semibold text-lg hover:bg-gray-800 transition-colors"
@@ -306,17 +306,19 @@ export default function Page() {
           </div>
 
           {/* Right: Large Hero Image */}
-          <div className="relative h-[600px] lg:h-[700px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-sm overflow-hidden">
-              {/* Placeholder for portrait image */}
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-8xl text-gray-400">📊</div>
-              </div>
+          <div className="relative h-[500px] md:h-[600px] lg:h-[700px] order-first lg:order-last">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden shadow-2xl">
+              {/* Hero Image - Using soph.png as portrait */}
+              <img 
+                src="/soph.png" 
+                alt="Greta Impact Dashboard" 
+                className="w-full h-full object-cover"
+              />
             </div>
             
             {/* Floating accent elements */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-black rounded-full opacity-10"></div>
-            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gray-900 rounded-full opacity-5"></div>
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-black opacity-5 hidden lg:block"></div>
+            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gray-900 opacity-5 hidden lg:block"></div>
           </div>
         </div>
       </div>
@@ -327,6 +329,12 @@ export default function Page() {
       {/* Value Proposition Section - Clean Light Design */}
       <section className="w-full bg-gray-50 py-32 px-8" data-oid="pain-section">
         <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="text-7xl md:text-8xl lg:text-9xl font-light italic text-gray-900 mb-8" style={{ fontFamily: 'Georgia, serif' }}>
+              greta
+            </div>
+          </div>
+          
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-16 text-center leading-tight">
             Guiding you through the<br />
             <span className="font-bold">busy work</span>
@@ -339,29 +347,29 @@ export default function Page() {
       </section>
 
       {/* Benefits Section */}
-      <section className="w-full bg-white py-32 px-8" data-oid="why-now">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="space-y-4">
-              <div className="text-6xl font-black text-gray-900">01</div>
-              <h3 className="text-2xl font-bold text-gray-900">Track daily activities</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+      <section className="w-full bg-white py-40 px-8" data-oid="why-now">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-16">
+            <div className="space-y-6">
+              <div className="text-8xl font-black text-gray-200">01</div>
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">Track daily activities</h3>
+              <p className="text-xl text-gray-600 leading-relaxed">
                 Every action measured against your mission alignment
               </p>
             </div>
             
-            <div className="space-y-4">
-              <div className="text-6xl font-black text-gray-900">02</div>
-              <h3 className="text-2xl font-bold text-gray-900">Get real-time insights</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-6">
+              <div className="text-8xl font-black text-gray-200">02</div>
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">Get real-time insights</h3>
+              <p className="text-xl text-gray-600 leading-relaxed">
                 Understand what moves the needle as you work
               </p>
             </div>
             
-            <div className="space-y-4">
-              <div className="text-6xl font-black text-gray-900">03</div>
-              <h3 className="text-2xl font-bold text-gray-900">Report progress</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-6">
+              <div className="text-8xl font-black text-gray-200">03</div>
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">Report progress</h3>
+              <p className="text-xl text-gray-600 leading-relaxed">
                 Communicate impact to stakeholders effortlessly
               </p>
             </div>
@@ -393,35 +401,41 @@ export default function Page() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full bg-white py-32 px-8" data-oid="testimonials">
+      <section className="w-full bg-white py-40 px-8" data-oid="testimonials">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-20 text-center">
+          <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-24 text-center">
             What Founders Say
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="bg-gray-50 p-10 border-2 border-gray-200">
-              <p className="text-xl text-gray-800 mb-8 leading-relaxed">
+          <div className="grid md:grid-cols-3 gap-16">
+            <div className="space-y-6">
+              <p className="text-2xl text-gray-800 leading-relaxed font-light">
                 &ldquo;Now I know if my daily grind actually grows my impact—it&apos;s become my north star.&rdquo;
               </p>
-              <div className="text-gray-900 font-bold text-lg">Edna</div>
-              <div className="text-gray-600">EdTech Founder</div>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-gray-900 font-bold text-lg">Edna</div>
+                <div className="text-gray-600 text-sm">EdTech Founder</div>
+              </div>
             </div>
             
-            <div className="bg-gray-50 p-10 border-2 border-gray-200">
-              <p className="text-xl text-gray-800 mb-8 leading-relaxed">
+            <div className="space-y-6">
+              <p className="text-2xl text-gray-800 leading-relaxed font-light">
                 &ldquo;Donor reports went from 12 hours to 30 minutes. Our team finally shares the same definition of progress.&rdquo;
               </p>
-              <div className="text-gray-900 font-bold text-lg">Samuel</div>
-              <div className="text-gray-600">Health NGO Leader</div>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-gray-900 font-bold text-lg">Samuel</div>
+                <div className="text-gray-600 text-sm">Health NGO Leader</div>
+              </div>
             </div>
             
-            <div className="bg-gray-50 p-10 border-2 border-gray-200">
-              <p className="text-xl text-gray-800 mb-8 leading-relaxed">
+            <div className="space-y-6">
+              <p className="text-2xl text-gray-800 leading-relaxed font-light">
                 &ldquo;Greta gave me confidence to fundraise and expand internationally.&rdquo;
               </p>
-              <div className="text-gray-900 font-bold text-lg">Joy</div>
-              <div className="text-gray-600">Youth Skills Innovator</div>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-gray-900 font-bold text-lg">Joy</div>
+                <div className="text-gray-600 text-sm">Youth Skills Innovator</div>
+              </div>
             </div>
           </div>
         </div>
@@ -462,22 +476,22 @@ export default function Page() {
       </section>
 
       {/* What We Do Section */}
-      <section className="w-full bg-gray-50 py-32 px-8" data-oid="l_sl9:c">
+      <section className="w-full bg-gray-50 py-40 px-8" data-oid="l_sl9:c">
         <div className="max-w-4xl mx-auto" data-oid="a3ac0:g">
-          <div className="mb-12" data-oid="j6gv6n:">
+          <div className="mb-16" data-oid="j6gv6n:">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-500" data-oid="byg2671">
               WHAT WE DO
             </span>
           </div>
 
-          <div className="mb-16" data-oid="4r58rh8">
-            <h2 className="text-5xl md:text-6xl font-light leading-tight text-gray-900 mb-8" data-oid="omj:h1v" style={{ fontFamily: 'Georgia, serif' }}>
+          <div className="space-y-12" data-oid="4r58rh8">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight text-gray-900" data-oid="omj:h1v" style={{ fontFamily: 'Georgia, serif' }}>
               A community of mission-driven founders helping each other turn daily work into measurable impact.
             </h2>
 
-            <div className="space-y-6 text-xl text-gray-700 leading-relaxed" data-oid="txncf6m">
+            <div className="space-y-8 text-2xl text-gray-700 leading-relaxed font-light" data-oid="txncf6m">
               <p>We&apos;ve built tools that show you which activities actually advance your mission—so you can focus your energy on what matters, celebrate real progress, and build the change you&apos;re working toward.</p>
-              <p className="font-semibold">Together.</p>
+              <p className="font-semibold text-3xl">Together.</p>
             </div>
           </div>
         </div>
