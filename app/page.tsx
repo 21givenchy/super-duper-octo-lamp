@@ -264,7 +264,7 @@ export default function Page() {
             </div>
             
             <div className="space-y-2">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[0.9]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[0.9] font-serif">
                 Your work is<br />clearer when
               </h1>
               
@@ -311,7 +311,7 @@ export default function Page() {
               {/* Hero Image - Using soph.png as portrait */}
               <img 
                 src="/soph.png" 
-                alt="Greta Impact Dashboard" 
+                alt="Mission alignment visualization" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -330,7 +330,7 @@ export default function Page() {
       <section className="w-full bg-gray-50 py-32 px-8" data-oid="pain-section">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="text-7xl md:text-8xl lg:text-9xl font-light italic text-gray-900 mb-8" style={{ fontFamily: 'Georgia, serif' }}>
+            <div className="text-7xl md:text-8xl lg:text-9xl font-light italic text-gray-900 mb-8 font-serif">
               greta
             </div>
           </div>
@@ -485,7 +485,7 @@ export default function Page() {
           </div>
 
           <div className="space-y-12" data-oid="4r58rh8">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight text-gray-900" data-oid="omj:h1v" style={{ fontFamily: 'Georgia, serif' }}>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight text-gray-900 font-serif" data-oid="omj:h1v">
               A community of mission-driven founders helping each other turn daily work into measurable impact.
             </h2>
 

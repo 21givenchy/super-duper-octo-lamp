@@ -28,6 +28,7 @@
   --font-poppins: var(--font-poppins);
   --font-cofo-mono: 'Cofo Sans Mono', monospace;
   --font-ui-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-serif: Georgia, 'Times New Roman', serif;
   
   /* New color utilities */
   --color-impact-green: var(--impact-green);
@@ -126,6 +127,10 @@
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
+}
+
+@utility font-serif {
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 :root {
