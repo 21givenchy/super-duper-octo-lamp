@@ -2,7 +2,7 @@
 
 import { podcastEpisodes } from "@/lib/podcastEpisodes";
 import { useState } from "react";
-import { LogoCarousel } from "@/components/ui/logo-carousel";
+import Image from "next/image";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, TrendingUp, FileText } from "lucide-react";
 
@@ -254,50 +254,72 @@ function NewsletterSignup() {
 export default function Page() {
   return (
     <div className="w-full min-h-screen relative flex flex-col" data-oid="in61k2.">
-      {/* Hero Section with Background */}
-      <div
-        className="relative w-full min-h-screen flex items-center justify-center"
-        style={{
-          backgroundImage: "url('/sea.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        data-oid="x4qlm95"
-      >
-        <div className="absolute inset-0 bg-black/20" data-oid="g3j60uh" />
+      {/* Hero Section with New Design */}
+      <main className="h-[100svh] flex flex-col items-center bg-white overflow-hidden">
+        <header className="w-full flex justify-center pt-4 md:pt-6 pb-2">
+            <h1 className="font-light text-black text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3.5vw] leading-none tracking-tighter uppercase font-medium text-center px-4">
+            Your work is clearer when Greta
+            </h1>
+        </header>
 
-        <div className="relative z-10 text-center px-4 flex flex-col items-center gap-8" data-oid="vgzgwxf">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-yellow-400 tracking-tight uppercase leading-[0.9]" data-oid="r3te6-_">
-            connecting daily work to your purpose
-          </h1>
+        <section className="relative flex-1 w-full max-w-[1400px] px-0 sm:px-4 md:px-8 pb-4 md:pb-8 flex flex-col items-center justify-center">
+          <div className="relative aspect-[16/10] w-full max-h-full overflow-hidden">
+            <Image
+              src="/hero.png"
+              alt="Portrait illustration"
+              fill
+              className="object-cover"
+              priority
+            />
 
-          <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-light max-w-4xl leading-relaxed" data-oid="9s6bq.l">
-            Guiding you through busywork and highlighting the tasks that truly matter, so you can focus your time and energy
-          </p>
+            {/* Typography Layer */}
+            <div className="absolute inset-0 flex flex-col pointer-events-none text-black">
+              {/* Left Overlay: shows you */}
+              <div className="absolute top-[38%] left-[6%]">
+                <span className="font-serif text-[7vw] md:text-[6.5vw] font-black tracking-tighter">shows you</span>
+              </div>
 
-          <div className="flex items-center gap-4 mt-8" data-oid=":6a0ymm">
-            <a 
-              href="/product/greta"
-              className="px-10 py-4 bg-yellow-400 text-black rounded-md font-bold text-lg hover:bg-yellow-300 transition-colors uppercase tracking-wide"
-            >
-              Meet Greta
-            </a>
-            <a 
-              href="/product/greta"
-              className="px-10 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-md font-bold text-lg hover:bg-white/20 transition-colors uppercase tracking-wide"
-            >
-              Learn More
-            </a>
+              {/* Right Overlay: OUTCOMES */}
+              <div className="absolute top-[40%] right-[6%]">
+                <span className="font-serif italic text-[6.5vw] md:text-[6vw] font-black tracking-tighter uppercase">
+                  OUTCOMES
+                </span>
+              </div>
+
+              {/* Center Descriptive Text */}
+              <div className="absolute top-[58%] left-1/2 -translate-x-1/2 w-full max-w-[65%] md:max-w-[45%] text-center">
+                <div className="w-16 md:w-24 h-[1px] bg-black/40 mx-auto mb-4 md:mb-6" />
+                <p className="text-[1.8vw] sm:text-[1.2vw] md:text-[0.8vw] lg:text-[0.7vw] tracking-[0.25em] leading-relaxed font-bold uppercase">
+                  Turning your daily tasks into live insights and impact dashboards. guiding you through the busywork and
+                  highlighting the few actions that truly move your mission.
+                </p>
+              </div>
+
+              {/* Bottom Credits and Logo */}
+              <div className="absolute bottom-[8%] left-0 w-full px-[8%] flex flex-col items-center">
+                <div className="flex flex-col items-center mb-4 md:mb-8 mr-[15%]">
+                  <span className="text-[1.8vw] md:text-[1vw] font-sans tracking-[0.3em] font-medium mb-1 lowercase">
+                    frontforumfocus
+                  </span>
+                  <span className="text-[1.4vw] md:text-[0.8vw] tracking-[0.4em] font-bold uppercase">PRESENTS</span>
+                </div>
+
+                <div className="absolute bottom-4 right-[6%] md:right-[8%]">
+                  <span className="font-serif text-[8vw] md:text-[7vw] font-black tracking-tighter">greta</span>
+                </div>
+              </div>
+
+              {/* Waitlist Form - Made interactive */}
+              <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 pointer-events-auto" data-oid=":6a0ymm">
+                <HeroWaitlistInput />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Logo Carousel for Social Proof */}
-      <LogoCarousel />
+        </section>
+      </main>
 
       {/* Pain Agitation Section */}
-      <section className="w-full bg-gray-900 py-24 px-8" data-oid="pain-section">
+      <section className="w-full min-h-screen bg-gray-900 flex items-center justify-center py-24 px-8" data-oid="pain-section">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-12 text-center">
             Why founders struggle to build with clarity:
@@ -328,7 +350,7 @@ export default function Page() {
       </section>
 
       {/* Why Now Section */}
-      <section className="w-full bg-gradient-to-b from-gray-900 to-black py-32 px-8" data-oid="why-now">
+      <section className="w-full min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center py-32 px-8" data-oid="why-now">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-6xl md:text-7xl lg:text-8xl font-light text-white/90 tracking-wider mb-8">
             AI
@@ -340,7 +362,7 @@ export default function Page() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-b from-black to-gray-900 py-24 px-8" data-oid="cta-section">
+      <section className="w-full min-h-screen bg-gradient-to-b from-black to-gray-900 flex items-center justify-center py-24 px-8" data-oid="cta-section">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
             Join the Founders Circle
@@ -360,7 +382,7 @@ export default function Page() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full bg-gray-900 py-24 px-8" data-oid="testimonials">
+      <section className="w-full min-h-screen bg-gray-900 flex items-center justify-center py-24 px-8" data-oid="testimonials">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-16 text-center">
             What Founders Say
@@ -395,7 +417,7 @@ export default function Page() {
       </section>
 
       {/* Community & Podcast Section */}
-      <section className="w-full bg-white py-24 px-8" data-oid="omlvf1r">
+      <section className="w-full min-h-screen bg-white flex items-center justify-center py-24 px-8" data-oid="omlvf1r">
         <div className="max-w-6xl mx-auto" data-oid="qfz6po2">
           <div className="text-center mb-16" data-oid="d-v5psh">
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4" data-oid="k-9.:.r">
@@ -471,7 +493,7 @@ export default function Page() {
       </section>
 
       {/* What We Do Section */}
-      <section className="w-full bg-gray-50 py-24 px-8" data-oid="l_sl9:c">
+      <section className="w-full min-h-screen bg-gray-50 flex items-center justify-center py-24 px-8" data-oid="l_sl9:c">
         <div className="max-w-5xl mx-auto" data-oid="a3ac0:g">
           <div className="mb-8" data-oid="j6gv6n:">
             <span className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-wider inline-block" data-oid="byg2671">
@@ -507,7 +529,7 @@ export default function Page() {
       </section>
 
       {/* How it Works Section - Interactive */}
-      <section className="w-full bg-white py-24 px-8" data-oid="how-it-works">
+      <section className="w-full min-h-screen bg-white flex items-center justify-center py-24 px-8" data-oid="how-it-works">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
             How Greta works
@@ -518,7 +540,7 @@ export default function Page() {
       </section>
 
       {/* About Us Section - Detailed */}
-      <section className="w-full bg-white py-24 px-8" data-oid="about-us-section">
+      <section className="w-full min-h-screen bg-white flex items-center justify-center py-24 px-8" data-oid="about-us-section">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
             About frontforumfocus
@@ -600,7 +622,7 @@ export default function Page() {
       </section>
 
       {/* Case Studies Section */}
-      <section className="w-full bg-gray-50 py-24 px-8" data-oid="case-studies-section">
+      <section className="w-full min-h-screen bg-gray-50 flex items-center justify-center py-24 px-8" data-oid="case-studies-section">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
             Real Founder Stories
@@ -681,7 +703,7 @@ export default function Page() {
       </section>
 
       {/* Resources Section */}
-      <section className="w-full bg-white py-24 px-8" data-oid="resources-section">
+      <section className="w-full min-h-screen bg-white flex items-center justify-center py-24 px-8" data-oid="resources-section">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
             Resources for Mission-Driven Founders
@@ -818,7 +840,7 @@ export default function Page() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-gray-50 py-24 px-8" data-oid="faq-section">
+      <section className="w-full min-h-screen bg-gray-50 flex items-center justify-center py-24 px-8" data-oid="faq-section">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center">
             Frequently Asked Questions

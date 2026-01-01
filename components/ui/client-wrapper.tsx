@@ -17,9 +17,38 @@ const HeaderLogo = () => (
 const GlobalNavbar = () => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
   const isWhitePage = pathname === '/';
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Only apply scroll behavior on the home page
+    if (pathname !== '/') {
+      setIsVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      // Show navbar after scrolling past the hero section (100vh)
+      const scrollPosition = window.scrollY;
+      const heroHeight = window.innerHeight;
+      
+      if (scrollPosition > heroHeight * 0.8) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-40 transition-colors ${
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+    } ${
       isWhitePage 
         ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm' 
         : 'bg-transparent backdrop-blur-sm border-b border-white/10'
@@ -86,8 +115,8 @@ export function ClientWrapper({ children }: { children: React.ReactNode }) {
       <HeaderLogo />
       <GlobalNavbar />
       <AdsConsent />
-      {/* Add padding-top to account for fixed navbar */}
-      <div className="pt-20 md:pt-24">
+      {/* No padding-top needed since navbar is hidden on hero */}
+      <div>
         {children}
       </div>
     </>
