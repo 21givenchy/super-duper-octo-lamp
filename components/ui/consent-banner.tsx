@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react'
 const CONSENT_KEY = 'ff_ads_consent'
 
 function readConsent(): boolean | null {
+  if (typeof window === 'undefined' || typeof localStorage?.getItem !== 'function') return null
   try {
     const v = localStorage.getItem(CONSENT_KEY)
     if (v === null) return null
@@ -14,6 +15,7 @@ function readConsent(): boolean | null {
 }
 
 function writeConsent(value: boolean) {
+  if (typeof window === 'undefined' || typeof localStorage?.setItem !== 'function') return
   try {
     localStorage.setItem(CONSENT_KEY, value ? '1' : '0')
     // broadcast to other components

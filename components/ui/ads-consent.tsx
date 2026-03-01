@@ -5,6 +5,24 @@ import React, { useEffect, useState } from "react";
 const ADS_KEY = "fff_ads_consent";
 const ADS_PUB = "ca-pub-5890845623424973"; // keep in sync with layout meta
 
+function safeLocalStorageGet(key: string): string | null {
+  if (typeof window === "undefined" || typeof localStorage?.getItem !== "function") return null;
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeLocalStorageSet(key: string, value: string): void {
+  if (typeof window === "undefined" || typeof localStorage?.setItem !== "function") return;
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // noop
+  }
+}
+
 // Type declaration for Google AdSense
 declare global {
   interface Window {
@@ -16,7 +34,7 @@ export default function AdsConsent() {
   const [consent, setConsent] = useState<string | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(ADS_KEY);
+    const stored = safeLocalStorageGet(ADS_KEY);
     setConsent(stored);
 
     // If previously granted, ensure the script is loaded on mount
@@ -50,7 +68,7 @@ export default function AdsConsent() {
 
   const handleAccept = () => {
     try {
-      localStorage.setItem(ADS_KEY, "granted");
+      safeLocalStorageSet(ADS_KEY, "granted");
       setConsent("granted");
       loadAdsScript();
       // notify ad slots
@@ -62,7 +80,7 @@ export default function AdsConsent() {
 
   const handleReject = () => {
     try {
-      localStorage.setItem(ADS_KEY, "denied");
+      safeLocalStorageSet(ADS_KEY, "denied");
       setConsent("denied");
       // notify ad slots
       window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: false } }));

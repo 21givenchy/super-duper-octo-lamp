@@ -28,9 +28,10 @@ export default function AdSlot({
       return
     }
 
-    // track consent state (read from localStorage if present)
+    // track consent state (read from localStorage if present); guard against SSR/polyfill
     const readConsent = () => {
       try {
+        if (typeof window === 'undefined' || typeof window.localStorage?.getItem !== 'function') return null
         const v = window.localStorage.getItem('ff_ads_consent')
         return v === '1'
       } catch {

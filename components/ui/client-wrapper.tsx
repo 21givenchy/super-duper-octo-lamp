@@ -114,7 +114,8 @@ export function ClientWrapper({ children }: { children: React.ReactNode }) {
       )}
       <HeaderLogo />
       <GlobalNavbar />
-      <AdsConsent />
+      {/* Only mount AdsConsent on the client to avoid SSR localStorage polyfill errors */}
+      {isMounted && <AdsConsent />}
       {/* No padding-top needed since navbar is hidden on hero */}
       <div>
         {children}
