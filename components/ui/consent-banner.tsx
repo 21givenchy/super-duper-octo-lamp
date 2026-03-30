@@ -5,6 +5,10 @@ const CONSENT_KEY = 'ff_ads_consent'
 
 function readConsent(): boolean | null {
   try {
+    // Only access localStorage on the client
+    if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+      return null
+    }
     const v = localStorage.getItem(CONSENT_KEY)
     if (v === null) return null
     return v === '1'
@@ -15,6 +19,10 @@ function readConsent(): boolean | null {
 
 function writeConsent(value: boolean) {
   try {
+    // Only access localStorage on the client
+    if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+      return
+    }
     localStorage.setItem(CONSENT_KEY, value ? '1' : '0')
     // broadcast to other components
     window.dispatchEvent(new CustomEvent('ad-consent-changed', {detail: {consent: value}}))

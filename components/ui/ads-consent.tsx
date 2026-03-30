@@ -16,14 +16,21 @@ export default function AdsConsent() {
   const [consent, setConsent] = useState<string | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(ADS_KEY);
-    setConsent(stored);
+    // Only access localStorage on the client
+    if (typeof window === 'undefined') return;
+    
+    try {
+      const stored = localStorage.getItem(ADS_KEY);
+      setConsent(stored);
 
-    // If previously granted, ensure the script is loaded on mount
-    if (stored === "granted") {
-      loadAdsScript();
-      // notify ad slots
-      window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: true } }));
+      // If previously granted, ensure the script is loaded on mount
+      if (stored === "granted") {
+        loadAdsScript();
+        // notify ad slots
+        window.dispatchEvent(new CustomEvent('ad-consent-changed', { detail: { consent: true } }));
+      }
+    } catch (err) {
+      console.error("Failed to access localStorage", err);
     }
   }, []);
 

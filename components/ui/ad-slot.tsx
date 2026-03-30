@@ -31,6 +31,10 @@ export default function AdSlot({
     // track consent state (read from localStorage if present)
     const readConsent = () => {
       try {
+        // Only access localStorage on the client
+        if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+          return null
+        }
         const v = window.localStorage.getItem('ff_ads_consent')
         return v === '1'
       } catch {

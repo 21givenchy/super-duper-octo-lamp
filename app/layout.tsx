@@ -19,6 +19,13 @@ const geistMono = Geist_Mono({
   display: "swap", // Add display swap for better loading performance
 });
 
+// Next.js 15 viewport export
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#111111',
+}
+
 // Next metadata for SEO and AEO optimization
 export const metadata: Metadata = {
   title: "frontforumfocus - Mission Alignment & Impact Tracking for Founders | Greta",
@@ -40,8 +47,6 @@ export const metadata: Metadata = {
     "impact reporting",
   ],
   authors: [{ name: "frontforumfocus" }],
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#111111",
   icons: {
     icon: "/s.png",
   },
